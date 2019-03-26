@@ -1,0 +1,3 @@
+renderType: freemarker
+title: Alien Title
+dialog: magnolia-aliens:components/title

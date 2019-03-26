@@ -1,0 +1,32 @@
+{
+  "name": "react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-bootstrap": "^0.31.0",
+    "react-dom": "^16.7.0",
+    "axios": "^0.18.0",
+    "react-router-dom": "4.3.1",
+    "magnolia-react-area51": "file:../../magnolia-react-area51"
+  },
+  "devDependencies": {
+    "react-scripts": "2.1.5",
+    "rewire": "^4.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "node ./scripts/build-non-split.js && npm run clean:js && npm run copy",
+    "build-old": "react-scripts build && npm run clean:js && npm run copy",
+    "clean:js": "rm ../light-modules/react-aliens/webresources/static/js/*",
+    "copy": "cp build/static/js/* ../light-modules/react-aliens/webresources/static/js ",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

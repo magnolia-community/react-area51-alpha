@@ -1,0 +1,3 @@
+renderType: freemarker
+title: Alien Slide
+dialog: magnolia-aliens:components/slide

@@ -1,0 +1,33 @@
+
+2019-01-11 09:21:48,078 DEBUG info.magnolia.cms.filters.ServletDispatchingFilter: Dispatching to servlet class info.magnolia.ui.admincentral.AdmincentralVaadinServlet
+2019-01-11 09:21:48,082 DEBUG fo.magnolia.i18nsystem.proxytoys.ProxytoysI18nizer: About to decorate info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition@4cfd5bc2 (parent: info.magnolia.ui.dialog.definition.ConfiguredFormDialogDefinition@4d1fecb1)
+2019-01-11 09:21:48,083 DEBUG fo.magnolia.i18nsystem.proxytoys.ProxytoysI18nizer: Proxied info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition@4cfd5bc2 (and returning info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition@4cfd5bc2)
+2019-01-11 09:21:48,088 DEBUG info.magnolia.context.AbstractRepositoryStrategy  : creating jcr session website by thread http-nio-8080-exec-5
+2019-01-11 09:21:48,094 DEBUG info.magnolia.cms.core.MagnoliaAccessProvider     : getEditor(session-admin-998)
+2019-01-11 09:21:48,095 DEBUG info.magnolia.cms.core.MagnoliaAccessProvider     : compile permissions for admin[info.magnolia.jaas.sp.jcr.MagnoliaJRAdminPrincipal] at website
+2019-01-11 09:21:48,105 DEBUG info.magnolia.context.AbstractRepositoryStrategy  : creating jcr session website by thread http-nio-8080-exec-5
+2019-01-11 09:21:48,108 DEBUG info.magnolia.cms.core.MagnoliaAccessProvider     : getEditor(session-admin-999)
+2019-01-11 09:21:48,108 DEBUG info.magnolia.cms.core.MagnoliaAccessProvider     : compile permissions for admin[info.magnolia.jaas.sp.jcr.MagnoliaJRAdminPrincipal] at website
+
+
+2019-01-11 09:21:48,110 DEBUG ia.jcr.wrapper.MgnlPropertySettingContentDecorator: LUD on /simple from session-admin-999:http-nio-8080-exec-5
+2019-01-11 09:21:48,112 DEBUG ia.jcr.wrapper.MgnlPropertySettingContentDecorator: Setting mgnl:created on /simple/main/0 from session-admin-998:http-nio-8080-exec-5
+
+
+2019-01-11 09:21:48,130 DEBUG gnolia.ui.vaadin.integration.jcr.JcrNewNodeAdapter: create a new node for parent /simple/main with name 0
+2019-01-11 09:21:48,132 DEBUG ia.jcr.wrapper.MgnlPropertySettingContentDecorator: saving session: session-admin-998::website::sys:false::http-nio-8080-exec-5
+2019-01-11 09:21:48,220 DEBUG info.magnolia.cms.util.DelayedExecutor            : execution triggered
+2019-01-11 09:21:48,221 DEBUG info.magnolia.cms.util.DelayedExecutor            : execution canceled
+2019-01-11 09:21:48,221 DEBUG info.magnolia.cms.util.DelayedExecutor            : execution triggered
+2019-01-11 09:21:48,221 DEBUG info.magnolia.cms.util.DelayedExecutor            : execution canceled
+
+
+2019-01-11 09:21:48,221 DEBUG ia.jcr.wrapper.MgnlPropertySettingContentDecorator: Updating /simple with java.util.GregorianCalendar[time=1547194908105,areFieldsSet=true,areAllFieldsSet=true,lenient=true,zone=sun.util.calendar.ZoneInfo[id="Europe/Berlin",offset=3600000,dstSavings=3600000,useDaylight=true,transitions=143,lastRule=java.util.SimpleTimeZone[id=Europe/Berlin,offset=3600000,dstSavings=3600000,useDaylight=true,startYear=0,startMode=2,startMonth=2,startDay=-1,startDayOfWeek=1,startTime=3600000,startTimeMode=2,endMode=2,endMonth=9,endDay=-1,endDayOfWeek=1,endTime=3600000,endTimeMode=2]],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2019,MONTH=0,WEEK_OF_YEAR=2,WEEK_OF_MONTH=2,DAY_OF_MONTH=11,DAY_OF_YEAR=11,DAY_OF_WEEK=6,DAY_OF_WEEK_IN_MONTH=2,AM_PM=0,HOUR=9,HOUR_OF_DAY=9,MINUTE=21,SECOND=48,MILLISECOND=105,ZONE_OFFSET=3600000,DST_OFFSET=0]
+2019-01-11 09:21:48,222 DEBUG ia.jcr.wrapper.MgnlPropertySettingContentDecorator: Updating /simple/main with java.util.GregorianCalendar[time=1547194908105,areFieldsSet=true,areAllFieldsSet=true,lenient=true,zone=sun.util.calendar.ZoneInfo[id="Europe/Berlin",offset=3600000,dstSavings=3600000,useDaylight=true,transitions=143,lastRule=java.util.SimpleTimeZone[id=Europe/Berlin,offset=3600000,dstSavings=3600000,useDaylight=true,startYear=0,startMode=2,startMonth=2,startDay=-1,startDayOfWeek=1,startTime=3600000,startTimeMode=2,endMode=2,endMonth=9,endDay=-1,endDayOfWeek=1,endTime=3600000,endTimeMode=2]],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2019,MONTH=0,WEEK_OF_YEAR=2,WEEK_OF_MONTH=2,DAY_OF_MONTH=11,DAY_OF_YEAR=11,DAY_OF_WEEK=6,DAY_OF_WEEK_IN_MONTH=2,AM_PM=0,HOUR=9,HOUR_OF_DAY=9,MINUTE=21,SECOND=48,MILLISECOND=105,ZONE_OFFSET=3600000,DST_OFFSET=0]
+2019-01-11 09:21:48,269 DEBUG info.magnolia.event.SimpleEventBus                : Dispatching event info.magnolia.ui.api.event.ContentChangedEvent@63ac228a with handler info.magnolia.pages.app.editor.PagesEditorSubApp$2@617c002d
+2019-01-11 09:21:48,271 DEBUG info.magnolia.event.SimpleEventBus                : Dispatching event info.magnolia.ui.api.event.ContentChangedEvent@63ac228a with handler info.magnolia.pages.app.editor.statusbar.activationstatus.ActivationStatus$1@1c4bae02
+2019-01-11 09:21:48,275 DEBUG info.magnolia.cms.util.DelayedExecutor            : execution triggered
+2019-01-11 09:21:48,275 DEBUG info.magnolia.cms.util.DelayedExecutor            : execution canceled
+2019-01-11 09:21:48,275 DEBUG info.magnolia.cms.util.DelayedExecutor            : execution triggered
+2019-01-11 09:21:48,275 DEBUG info.magnolia.cms.util.DelayedExecutor            : execution canceled
+2019-01-11 09:21:48,276 DEBUG info.magnolia.i18nsystem.TranslationServiceImpl   : Looking up in global i18n message bundle with key [[pages.editPage.statusBar.unpublished]] and Locale [en]

@@ -1,0 +1,71 @@
+body {
+	padding: 0px;
+	margin-top: 0px!important;
+}
+
+.list-inline a {
+    color: #FFF!important;
+    text-transform: uppercase!important;
+    text-decoration: none!important;
+}
+
+.mgn-train-header{
+	background-color: #6A9000!important;
+	margin-bottom: 0px!important;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #FFF!important;
+    text-transform: uppercase;
+}
+
+.mgn-train-navigation {
+	background-color: #9BB454!important;
+}
+
+.mgn-train-footer {
+	background-color: #2A3E00!important;
+	padding: 15px;
+}
+
+.mgn-train-time-table {
+	border: 1px;
+}
+
+.navbar-brand {
+	padding: 7px 15px 15px 15px!important;
+}
+
+.mgn-train-section {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.navbar {
+    border-radius: 0px!important;
+}
+.navbar-default {
+    border-width: 0px!important;
+}
+
+.mgn-train-time-table {
+	border-spacing: 2px;
+	border-collapse: separate;
+}
+
+.mgn-train-time-table th {
+	padding: 5px;
+	text-transform: uppercase;
+	background-color: darkgray;
+	color: white;
+}
+
+.mgn-train-time-table td {
+	padding: 5px;
+	border-left: 1px darkgray solid;
+	border-bottom: 1px darkgray solid;
+}
+
+.mgn-train-time-table td:last-child {
+	padding: 5px;
+	border-right: 1px darkgray solid;
+}

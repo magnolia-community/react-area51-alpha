@@ -1,0 +1,34 @@
+templateScript: /react-aliens/templates/pages/standard.ftl
+renderType: freemarker
+visible: true
+title: Standard Alien Page
+class: info.magnolia.module.jsmodels.rendering.JavascriptTemplateDefinition
+modelPath: /magnolia-aliens/templates/common/definition-extractor-model.js
+
+areas:
+  left:
+    renderType: freemarker
+    availableComponents:
+      title:
+        id: magnolia-aliens:components/title
+      text-image:
+        id: magnolia-aliens:components/text-image
+      slideshow:
+        id: magnolia-aliens:components/slideshow      
+
+
+  right:
+    renderType: freemarker
+    availableComponents:
+      title:
+        id: magnolia-aliens:components/title
+      text-image:
+        id: magnolia-aliens:components/text-image
+      slideshow:
+        id: magnolia-aliens:components/slideshow
+  
+  schedule:
+    renderType: freemarker
+    availableComponents:
+      title:
+        id: magnolia-aliens:components/title
