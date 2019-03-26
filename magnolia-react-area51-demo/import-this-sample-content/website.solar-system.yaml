@@ -1,0 +1,193 @@
+'solar-system': 
+  'title': 'Our Solar System'
+  jcr:primaryType: 'mgnl:page'
+  jcr:uuid: '6d86788d-8266-4ec0-aec0-95f935695fdb'
+  mgnl:created: 2019-03-26T23:06:14.834+01:00
+  mgnl:createdBy: 'superuser'
+  mgnl:lastModified: 2019-03-26T23:54:54.433+01:00
+  mgnl:lastModifiedBy: 'superuser'
+  mgnl:template: 'react-aliens:pages/standard'
+  'left': 
+    jcr:primaryType: 'mgnl:area'
+    jcr:uuid: '0f386141-6cb9-40ad-be8f-af2296c0a22a'
+    mgnl:activationStatus: false
+    mgnl:created: 2019-03-26T23:14:52.538+01:00
+    mgnl:createdBy: 'superuser'
+    mgnl:lastActivated: 2019-03-26T23:14:52.541+01:00
+    mgnl:lastActivatedBy: 'superuser'
+    mgnl:lastModified: 2019-03-26T23:54:54.433+01:00
+    mgnl:lastModifiedBy: 'superuser'
+    '00': 
+      'title': 'SS1'
+      jcr:primaryType: 'mgnl:component'
+      jcr:uuid: '03139ecf-8b4e-41b0-b0e1-25802bc9cb0d'
+      mgnl:created: 2019-03-26T23:41:31.161+01:00
+      mgnl:createdBy: 'superuser'
+      mgnl:lastModified: 2019-03-26T23:54:54.433+01:00
+      mgnl:lastModifiedBy: 'superuser'
+      mgnl:template: 'magnolia-aliens:components/slideshow'
+      'main': 
+        jcr:primaryType: 'mgnl:area'
+        jcr:uuid: '187e4367-0a7d-4a7a-aec7-f7032695d0d8'
+        mgnl:activationStatus: false
+        mgnl:created: 2019-03-26T23:41:55.985+01:00
+        mgnl:createdBy: 'superuser'
+        mgnl:lastActivated: 2019-03-26T23:41:55.986+01:00
+        mgnl:lastActivatedBy: 'superuser'
+        mgnl:lastModified: 2019-03-26T23:54:54.433+01:00
+        mgnl:lastModifiedBy: 'superuser'
+        '00': 
+          'title': 'Slide-1'
+          jcr:primaryType: 'mgnl:component'
+          jcr:uuid: '6e72dc38-3fcb-4d71-a791-eb59f02b9f3d'
+          mgnl:activationStatus: false
+          mgnl:created: 2019-03-26T23:41:55.985+01:00
+          mgnl:createdBy: 'superuser'
+          mgnl:lastActivated: 2019-03-26T23:41:55.988+01:00
+          mgnl:lastActivatedBy: 'superuser'
+          mgnl:lastModified: 2019-03-26T23:42:26.772+01:00
+          mgnl:lastModifiedBy: 'superuser'
+          mgnl:template: 'magnolia-aliens:components/slide'
+        '0': 
+          'title': 'Slide-2'
+          jcr:primaryType: 'mgnl:component'
+          jcr:uuid: '39ef62cd-180f-44e0-8c1c-527a0c617663'
+          mgnl:created: 2019-03-26T23:54:54.470+01:00
+          mgnl:createdBy: 'superuser'
+          mgnl:lastModified: 2019-03-26T23:54:54.470+01:00
+          mgnl:lastModifiedBy: 'superuser'
+          mgnl:template: 'magnolia-aliens:components/slide'
+    '0': 
+      'title': 'Special Appendages'
+      jcr:primaryType: 'mgnl:component'
+      jcr:uuid: 'c055043e-2802-48bf-bbfa-65b70b824a66'
+      mgnl:created: 2019-03-26T23:16:39.276+01:00
+      mgnl:createdBy: 'superuser'
+      mgnl:lastModified: 2019-03-26T23:16:39.276+01:00
+      mgnl:lastModifiedBy: 'superuser'
+      mgnl:template: 'magnolia-aliens:components/title'
+  'right': 
+    jcr:primaryType: 'mgnl:area'
+    jcr:uuid: '141a6f0a-ee84-4d81-9fdf-51fc7b8af7bf'
+    mgnl:activationStatus: false
+    mgnl:created: 2019-03-26T23:15:45.433+01:00
+    mgnl:createdBy: 'superuser'
+    mgnl:lastActivated: 2019-03-26T23:15:45.436+01:00
+    mgnl:lastActivatedBy: 'superuser'
+    mgnl:lastModified: 2019-03-26T23:17:00.181+01:00
+    mgnl:lastModifiedBy: 'superuser'
+    '0': 
+      'title': 'Means of Communication'
+      jcr:primaryType: 'mgnl:component'
+      jcr:uuid: 'aa21d290-b2e1-4dc3-9975-2726b5977e80'
+      mgnl:created: 2019-03-26T23:17:00.182+01:00
+      mgnl:createdBy: 'superuser'
+      mgnl:lastModified: 2019-03-26T23:17:00.182+01:00
+      mgnl:lastModifiedBy: 'superuser'
+      mgnl:template: 'magnolia-aliens:components/title'
+  'schedule': 
+    jcr:primaryType: 'mgnl:area'
+    jcr:uuid: '1dfc876a-ad7d-49d4-b328-a4d2f65d4da9'
+    mgnl:activationStatus: false
+    mgnl:created: 2019-03-26T23:15:49.976+01:00
+    mgnl:createdBy: 'superuser'
+    mgnl:lastActivated: 2019-03-26T23:15:49.978+01:00
+    mgnl:lastActivatedBy: 'superuser'
+    mgnl:lastModified: 2019-03-26T23:16:00.420+01:00
+    mgnl:lastModifiedBy: 'superuser'
+  'neptune': 
+    'title': 'Neptune'
+    jcr:primaryType: 'mgnl:page'
+    jcr:uuid: 'f12bcd09-3708-4e55-8441-de0a80dbcb5d'
+    mgnl:activationStatus: false
+    mgnl:created: 2019-03-26T23:17:20.043+01:00
+    mgnl:createdBy: 'superuser'
+    mgnl:lastActivated: 2019-03-26T23:17:20.047+01:00
+    mgnl:lastActivatedBy: 'superuser'
+    mgnl:lastModified: 2019-03-26T23:42:03.777+01:00
+    mgnl:lastModifiedBy: 'superuser'
+    mgnl:template: 'react-aliens:pages/standard'
+    'left': 
+      jcr:primaryType: 'mgnl:area'
+      jcr:uuid: 'ae52233c-c47b-4698-bb23-d19374ce52ea'
+      mgnl:activationStatus: false
+      mgnl:created: 2019-03-26T23:17:20.043+01:00
+      mgnl:createdBy: 'superuser'
+      mgnl:lastActivated: 2019-03-26T23:17:20.051+01:00
+      mgnl:lastActivatedBy: 'superuser'
+      mgnl:lastModified: 2019-03-26T23:42:03.777+01:00
+      mgnl:lastModifiedBy: 'superuser'
+      '0': 
+        'title': 'Neptune'
+        jcr:primaryType: 'mgnl:component'
+        jcr:uuid: 'c17094e4-b32d-4868-b0be-0ad3a4d2ad04'
+        mgnl:activationStatus: false
+        mgnl:created: 2019-03-26T23:17:20.043+01:00
+        mgnl:createdBy: 'superuser'
+        mgnl:lastActivated: 2019-03-26T23:17:20.052+01:00
+        mgnl:lastActivatedBy: 'superuser'
+        mgnl:lastModified: 2019-03-26T23:18:33.569+01:00
+        mgnl:lastModifiedBy: 'superuser'
+        mgnl:template: 'magnolia-aliens:components/title'
+      '00': 
+        'title': 'Best Aliens'
+        jcr:primaryType: 'mgnl:component'
+        jcr:uuid: '2db4f656-e47e-491b-ac4d-6c40fc8ad98f'
+        mgnl:created: 2019-03-26T23:19:09.133+01:00
+        mgnl:createdBy: 'superuser'
+        mgnl:lastModified: 2019-03-26T23:42:03.777+01:00
+        mgnl:lastModifiedBy: 'superuser'
+        mgnl:template: 'magnolia-aliens:components/slideshow'
+        'main': 
+          jcr:primaryType: 'mgnl:area'
+          jcr:uuid: 'fc8f92fa-d8de-492a-b17d-e0d7f8e90d84'
+          mgnl:activationStatus: false
+          mgnl:created: 2019-03-26T23:19:50.476+01:00
+          mgnl:createdBy: 'superuser'
+          mgnl:lastActivated: 2019-03-26T23:19:50.477+01:00
+          mgnl:lastActivatedBy: 'superuser'
+          mgnl:lastModified: 2019-03-26T23:20:11.294+01:00
+          mgnl:lastModifiedBy: 'superuser'
+          '00': 
+            'title': 'Norg'
+            jcr:primaryType: 'mgnl:component'
+            jcr:uuid: '1554fe08-e7a1-4fd2-bd9f-df28c7d8a7cc'
+            mgnl:created: 2019-03-26T23:19:23.718+01:00
+            mgnl:createdBy: 'superuser'
+            mgnl:lastModified: 2019-03-26T23:19:23.718+01:00
+            mgnl:lastModifiedBy: 'superuser'
+            mgnl:template: 'magnolia-aliens:components/slide'
+    'right': 
+      jcr:primaryType: 'mgnl:area'
+      jcr:uuid: '86fe90fb-283f-4f1b-9223-9bca9cab73dd'
+      mgnl:activationStatus: false
+      mgnl:created: 2019-03-26T23:17:20.043+01:00
+      mgnl:createdBy: 'superuser'
+      mgnl:lastActivated: 2019-03-26T23:17:20.054+01:00
+      mgnl:lastActivatedBy: 'superuser'
+      mgnl:lastModified: 2019-03-26T23:18:50.307+01:00
+      mgnl:lastModifiedBy: 'superuser'
+      '0': 
+        'title': 'Moons of Neptune'
+        jcr:primaryType: 'mgnl:component'
+        jcr:uuid: 'b573280f-a2b3-46b1-ab19-6a50b4c53846'
+        mgnl:activationStatus: false
+        mgnl:created: 2019-03-26T23:17:20.043+01:00
+        mgnl:createdBy: 'superuser'
+        mgnl:lastActivated: 2019-03-26T23:17:20.055+01:00
+        mgnl:lastActivatedBy: 'superuser'
+        mgnl:lastModified: 2019-03-26T23:18:50.307+01:00
+        mgnl:lastModifiedBy: 'superuser'
+        mgnl:template: 'magnolia-aliens:components/title'
+    'schedule': 
+      jcr:primaryType: 'mgnl:area'
+      jcr:uuid: 'b7d8ffb2-96ff-4719-af52-3cab2e1bd994'
+      mgnl:activationStatus: false
+      mgnl:created: 2019-03-26T23:17:20.043+01:00
+      mgnl:createdBy: 'superuser'
+      mgnl:lastActivated: 2019-03-26T23:17:20.057+01:00
+      mgnl:lastActivatedBy: 'superuser'
+      mgnl:lastModified: 2019-03-26T23:17:20.043+01:00
+      mgnl:lastModifiedBy: 'superuser'
+
+
