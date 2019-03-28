@@ -3,6 +3,24 @@ body {
 	margin-top: 0px!important;
 }
 
+.bd-title {
+	margin-top: 1rem;
+	margin-bottom: .5rem;
+	font-weight: 300;
+	font-size: 3rem;
+}
+
+.component-name{
+	font-size: 0.7em;
+}
+
+.slideshow{
+	
+}
+h2{
+	margin-top: 20px;
+}
+/*
 .list-inline a {
     color: #FFF!important;
     text-transform: uppercase!important;
@@ -69,3 +87,4 @@ body {
 	padding: 5px;
 	border-right: 1px darkgray solid;
 }
+*/

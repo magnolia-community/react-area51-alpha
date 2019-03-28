@@ -45,14 +45,18 @@ class PageStandard extends Component {
 	
     return (
 			<div>
-				<h1>Page Standard</h1>
+				
+				<div className="container">
+
+					<h1 class="bd-title">{this.props.title}</h1>
+					<div class="component-name">Page Standard</div>
 					<div>
 						<div>
 							<Route path="/dashboard(.html)?/" />
 						</div>
 					</div>
 
-				<div className="container">
+
 					<Row columns={row1}/>
 					<Row columns={row2}/>
 				</div>

@@ -27,8 +27,8 @@ class SlideShow extends React.Component {
 
 		dlog("render slideshow.")
 		return (
-	    <div >
-				<h1>Slideshow</h1>
+	    <div class="slideshow">
+				<h4>{this.props.title} Slideshow</h4>
 
 				<DebugInfo {...this.props}/>
 
