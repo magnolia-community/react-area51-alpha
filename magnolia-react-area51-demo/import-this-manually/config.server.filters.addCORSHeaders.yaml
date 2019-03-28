@@ -1,0 +1,15 @@
+'addCORSHeaders': 
+  'class': 'info.magnolia.cms.filters.AddHeadersFilter'
+  'enabled': 'true'
+  jcr:primaryType: 'mgnl:content'
+  'bypasses': 
+    'bypassForEverythingElseThanRest': 
+      'class': 'info.magnolia.voting.voters.URIStartsWithVoter'
+      'not': 'true'
+      'pattern': '/.rest/'
+  'headers': 
+    'Access-Control-Allow-Headers': 'X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept'
+    'Access-Control-Allow-Methods': 'GET'
+    'Access-Control-Allow-Origin': '*'
+
+
