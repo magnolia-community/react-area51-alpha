@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-import { Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 import {dlog} from '../AppHelpers';
 
@@ -45,7 +44,9 @@ class PageStandard extends Component {
 	
     return (
 			<div>
-				
+				<ul className="list-inline">
+				<SubNav spec={this.props} /></ul>
+
 				<div className="container">
 
 					<h1 class="bd-title">{this.props.title}</h1>
@@ -55,7 +56,6 @@ class PageStandard extends Component {
 							<Route path="/dashboard(.html)?/" />
 						</div>
 					</div>
-
 
 					<Row columns={row1}/>
 					<Row columns={row2}/>

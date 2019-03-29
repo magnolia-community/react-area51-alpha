@@ -4,6 +4,9 @@ body {
 	background-color: #f9f9f9;
 }
 
+.navbar{
+	align-items: flex-start;
+}
 footer{
 	bottom: 0;
 	position: fixed;
@@ -42,9 +45,8 @@ h1,h2,h3,h4{
 .slideshow{
 	
 }
-h2{
-	margin-top: 20px;
-}
+
+/*
 
 .navbar-toggle {
 	float: left !important;
@@ -58,6 +60,7 @@ h2{
   .navbar-right > li {
 	float: left;
   }
+  */
 
   
 /*

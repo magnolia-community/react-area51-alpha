@@ -10,7 +10,6 @@ import {dlog} from '../AppHelpers';
 
 class Navigation extends Component {
 
-
 	constructor(props) {
 		super(props);
 
@@ -66,42 +65,6 @@ class Navigation extends Component {
 		});
 	}
 
-
-  render() {
-		if (!this.state.init){
-			return null;
-		}
-
-		var items = [];
-		this.state.nav['@nodes'].map(function(nodeName){
-			items.push(this.state.nav[nodeName])
-			return null;
-		},this)
-
-
-    return (
-
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-	
-	<Link to={'/'} className="navbar-brand">{this.state.nav.title}</Link>
-		<div class="navbar-collapse">
-			<ul class="navbar-nav">
-				<MenuItems items={items} />
-			</ul>
-		</div>
- 
-</nav>
-
-    );
-  }
-}
-
-class MenuItem extends Component {
-
-	/**
-	 * When not in page editor (in CMS), then strip off that root path.
-	 * @param {*} path 
-	 */
 	getRelativePath(path, inPageEditor){
 		if (inPageEditor){
 			return path;
@@ -111,36 +74,97 @@ class MenuItem extends Component {
 		return relativePath;
 	}
 
-  render () {	
-		var items = [];
-		this.props.spec['@nodes'].map(function(nodeName){
-			items.push(this.props.spec[nodeName])
+	getPathOfPageFromURL(){
+		var pathOfPage = window.location.pathname;
+		//Remove any extension.
+		if (pathOfPage.lastIndexOf('.')>0){
+			pathOfPage = pathOfPage.substr(0, pathOfPage.lastIndexOf('.'));
+		}
+		//Remove trailing slash
+		dlog("d:" + pathOfPage[pathOfPage.length-1]);
+
+		if (pathOfPage[pathOfPage.length-1]=='/'){
+			pathOfPage = pathOfPage.substr(0, pathOfPage.length-1);
+		}
+		return pathOfPage;
+	}
+
+
+
+  render() {
+		if (!this.state.init){
+			return null;
+		}
+
+		//Which is this pages ancestor?
+		var subNavOfThisPage;
+		var pathOfPage = this.getPathOfPageFromURL();
+
+		this.state.nav['@nodes'].map(function(nodeName){
+			var item = this.state.nav[nodeName];
+			var path = item['@path'];
+			var pathOfItem = this.getRelativePath(path, this.context.inPageEditor);
+			dlog("page:"+ pathOfPage + " & item:" + pathOfItem)
+			if (pathOfPage.indexOf(pathOfItem) > -1){
+				subNavOfThisPage = item;
+			}
+		},this)
+
+	
+    return (
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+	
+	<Link to={'/'} className="navbar-brand">{this.state.nav.title}</Link>
+	
+	<div class="navbar-collapse">	
+		<div class="nav-stack">
+			<ul class="navbar-nav">
+				<MenuItems spec={this.state.nav} context={this.context} class1="nav-item" class2="nav-link" />
+			</ul>
+			<ul class="navbar-nav">
+					<MenuItems spec={subNavOfThisPage} context={this.context}  class1="nav-item" class2="nav-link" />
+			</ul>
+		</div>
+	</div>
+
+</nav>
+
+
+    );
+  }
+}
+
+
+const MenuItems = (props) => {
+	
+	if (!props.spec){
+		dlog("SubNav. No spec.")
+		return null;
+	}
+
+	var items = [];
+		props.spec['@nodes'].map(function(nodeName){
+			items.push(props.spec[nodeName])
 			return null;
 		},this)
 
-		var url = this.getRelativePath(this.props.spec['@path'], this.context.inPageEditor);
-		if (!url){
-			url = "/";
+		var getRelativePath =function(path, inPageEditor){
+			if (inPageEditor){
+				return path;
+			} 
+			// Just strip off the pathOfPage. We assume it is the correct path root.
+			var relativePath = path.substr(ENVIRONMENT.rootCmsPath.length);
+			return relativePath;
 		}
 
-    return (
-
-      <li key={this.props.spec['@path']} class="nav-item">
-				<Link to={url} class="nav-link">{this.props.spec.title}</Link>
-				{/* <ul key={this.props.spec['@path']} className={this.props.class}>
-        	<MenuItems items={items} class={this.props.class}/>
-      	</ul> */}
-			</li>
-    )
-  }
-};
-
-const MenuItems = (props) => {
-  return props.items.map(item => (
+	return items.map(item => (
    
-      <MenuItem spec={item} />
+		<li key={item['@path']}  class={props.class1}>
+			<Link class={props.class2} to={getRelativePath(item['@path'], props.context.inPageEditor)}>{item.title}</Link>
+		</li>
   
-  ))
+	))
 };
 
 
