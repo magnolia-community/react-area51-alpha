@@ -1,6 +1,24 @@
 body {
 	padding: 0px;
 	margin-top: 0px!important;
+	background-color: #f9f9f9;
+}
+
+footer{
+	bottom: 0;
+	position: fixed;
+	background-color: white;
+	width: 100%;
+	padding-top: 10px;
+}
+footer li{
+	display: inline-block;
+	margin-right: 10px;
+	
+}
+
+h1,h2,h3,h4{
+	margin-top: 10px;
 }
 
 .bd-title {
@@ -11,7 +29,14 @@ body {
 }
 
 .component-name{
-	font-size: 0.7em;
+	margin-top:-10px;
+	font-size: 0.6em;
+}
+.component-name:before {
+    content: "[";
+}
+.component-name:after {
+    content: "]";
 }
 
 .slideshow{
@@ -20,6 +45,21 @@ body {
 h2{
 	margin-top: 20px;
 }
+
+.navbar-toggle {
+	float: left !important;
+	margin-left: 15px;
+  }
+  
+  .navbar-header.navbar-right.pull-right {
+	margin-right: 15px;
+  }
+  
+  .navbar-right > li {
+	float: left;
+  }
+
+  
 /*
 .list-inline a {
     color: #FFF!important;

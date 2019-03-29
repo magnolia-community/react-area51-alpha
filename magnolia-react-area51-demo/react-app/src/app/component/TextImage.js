@@ -15,6 +15,7 @@ class TextImage extends React.Component {
 	    		<div className="col-xs-12">
 	    			<h2 className="light">{this.props.title}</h2>
 	    		</div>
+				<div class="component-name">TextImage</div>
 	    	</div>
 	    );
 	}

@@ -5,15 +5,12 @@ import ENVIRONMENT from "../../environments/environment"
 class Slide extends React.Component{
 
   render() {
-    var imgTag = "";
-    if (this.props.image){
 
-    }
     var damURL = ENVIRONMENT.damUrl + this.props.image;
     
     function CardImage(props) {
       if (props.image) {
-        return <img class="card-img-top" src={damURL} alt="Card image cap"/>;
+        return <img class="card-img-top" src={damURL} alt="Card alt."/>;
       }
       return null;
     }

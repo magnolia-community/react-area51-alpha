@@ -10,10 +10,10 @@ Default: Just get the content on this one page.
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="shortcut icon" href="${ctx.contextPath}/.resources/react-aliens/webresources/favicon.ico">
-		<link href="${ctx.contextPath}/.resources/react-aliens/webresources/static/css/bootstrap337.min.css" rel="stylesheet">
-
+		
 		<link rel="manifest" href="${ctx.contextPath}/.resources/react-aliens/webresources/manifest.json">
-		<link href="${ctx.contextPath}/.resources/react-aliens/webresources/static/css/main.css" rel="stylesheet">
+
+		${resfn.css("/react-aliens/webresources/static/css/main.*css")}
 
 		[@cms.page /]
 

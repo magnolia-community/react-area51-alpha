@@ -71,20 +71,30 @@ class Navigation extends Component {
 		if (!this.state.init){
 			return null;
 		}
-    return (
-        <nav className="navbar navbar-default affix-top mgn-train-navigation">
-	    	<div className="container">
-					<ul className="navD navbar-navD">
-						<MenuItem spec={this.state.nav} class="navD navbar-navD" />
-					</ul>
-				</div> 
 
-	    </nav>
+		var items = [];
+		this.state.nav['@nodes'].map(function(nodeName){
+			items.push(this.state.nav[nodeName])
+			return null;
+		},this)
+
+
+    return (
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+	
+	<Link to={'/'} className="navbar-brand">{this.state.nav.title}</Link>
+		<div class="navbar-collapse">
+			<ul class="navbar-nav">
+				<MenuItems items={items} />
+			</ul>
+		</div>
+ 
+</nav>
+
     );
   }
 }
-
-
 
 class MenuItem extends Component {
 
@@ -93,11 +103,9 @@ class MenuItem extends Component {
 	 * @param {*} path 
 	 */
 	getRelativePath(path, inPageEditor){
-
 		if (inPageEditor){
 			return path;
 		} 
-
 		// Just strip off the pathOfPage. We assume it is the correct path root.
 		var relativePath = path.substr(ENVIRONMENT.rootCmsPath.length);
 		return relativePath;
@@ -116,11 +124,12 @@ class MenuItem extends Component {
 		}
 
     return (
-      <li key={this.props.spec['@path']}>
-				<Link to={url}>{this.props.spec.title}</Link>
-				<ul key={this.props.spec['@path']} className={this.props.class}>
+
+      <li key={this.props.spec['@path']} class="nav-item">
+				<Link to={url} class="nav-link">{this.props.spec.title}</Link>
+				{/* <ul key={this.props.spec['@path']} className={this.props.class}>
         	<MenuItems items={items} class={this.props.class}/>
-      	</ul>
+      	</ul> */}
 			</li>
     )
   }
@@ -128,9 +137,9 @@ class MenuItem extends Component {
 
 const MenuItems = (props) => {
   return props.items.map(item => (
-    <ul key={item['@path']} className={props.class}>
-      <MenuItem spec={item} class={props.class}/>
-    </ul>
+   
+      <MenuItem spec={item} />
+  
   ))
 };
 

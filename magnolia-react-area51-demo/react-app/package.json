@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "react": "^16.7.0",
-    "react-bootstrap": "^0.31.0",
     "react-dom": "^16.7.0",
     "axios": "^0.18.0",
     "react-router-dom": "4.3.1",
@@ -16,10 +15,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "node ./scripts/build-non-split.js && npm run clean:js && npm run copy",
-    "build-old": "react-scripts build && npm run clean:js && npm run copy",
-    "clean:js": "rm ../light-modules/react-aliens/webresources/static/js/*",
-    "copy": "cp build/static/js/* ../light-modules/react-aliens/webresources/static/js ",
+    "build": "node ./scripts/build-non-split.js  && npm run clean:js && npm run copy:js  && npm run clean:css && npm run copy:css",
+    "build-old": "react-scripts build && npm run clean:js && npm run copy:js  && npm run clean:css && npm run copy:css",
+    "clean:js": "rm -f ../light-modules/react-aliens/webresources/static/js/*",
+    "clean:css": "rm -f ../light-modules/react-aliens/webresources/static/css/*",
+    "copy:js": "cp build/static/js/* ../light-modules/react-aliens/webresources/static/js ",
+    "copy:css": "cp build/static/css/* ../light-modules/react-aliens/webresources/static/css ",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

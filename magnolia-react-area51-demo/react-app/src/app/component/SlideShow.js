@@ -28,7 +28,8 @@ class SlideShow extends React.Component {
 		dlog("render slideshow.")
 		return (
 	    <div class="slideshow">
-				<h4>{this.props.title} Slideshow</h4>
+				<h4>{this.props.title}</h4>
+				<div class="component-name">Slideshow</div>
 
 				<DebugInfo {...this.props}/>
 
@@ -38,7 +39,9 @@ class SlideShow extends React.Component {
 					cmsAreaName="main"
 					parentComponentID={this.props["mgnl:template"]}
 				/>
+				
 			</div>
+			
 	    );
 	}
 
