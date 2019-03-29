@@ -5,9 +5,14 @@ form:
         - name: title
           label: Title
           i18n: true
-          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          fieldType: text
+        - name: body
+          label: Body
+          i18n: true
+          fieldType: text
+          rows: 3
         - name: image
-          class: info.magnolia.ui.form.field.definition.LinkFieldDefinition
+          fieldType: link
           targetWorkspace: dam
           appName: assets
           label: Select image

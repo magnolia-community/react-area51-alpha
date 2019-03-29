@@ -4,7 +4,7 @@ Default: Just get the content on this one page.
 -->
 <html lang="en">
 	<head>
-		<title>React Aliens</title>
+		<title>Area51 Aliens</title>
 
 		<meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">

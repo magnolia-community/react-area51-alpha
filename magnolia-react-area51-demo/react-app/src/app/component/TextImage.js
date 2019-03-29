@@ -8,12 +8,13 @@ class TextImage extends React.Component {
 		var damURL = ENVIRONMENT.damUrl + this.props.image;
 
 	    return (
-	    	<div className="row">
-	    		<div className="col-xs-12">
+	    	<div>
+	    		<h5 className="light">{this.props.title}</h5>
+				<div>
 	    			<img className="img-responsive" src={damURL} alt=""/>
 	    		</div>
-	    		<div className="col-xs-12">
-	    			<h2 className="light">{this.props.title}</h2>
+	    		<div>
+					<p>{this.props.text}</p>
 	    		</div>
 				<div class="component-name">TextImage</div>
 	    	</div>

@@ -43,7 +43,7 @@ class PageStandard extends Component {
 	dlog("render PageStandard.")
 	
     return (
-			<div>
+			<div className="content-background">
 
 				<div className="container">
 

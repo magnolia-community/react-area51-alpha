@@ -22,7 +22,7 @@ class Slide extends React.Component{
         <CardImage image={this.props.image}/>
         <div class="card-body">
           <h5 class="card-title">{this.props.title}</h5>
-          <p class="card-text">Card text</p>
+          <p class="card-text">{this.props.body}</p>
         </div>
       </div>
 
