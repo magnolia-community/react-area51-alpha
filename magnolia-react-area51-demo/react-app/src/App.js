@@ -8,7 +8,7 @@ import {Page} from 'magnolia-react-area51';
 import Footer from './app/component/Footer';
 import Navigation from './app/component/Navigation';
 
-import {dlog} from './app/AppHelpers';
+import {dlog, inPageEditor} from './app/AppHelpers';
 
 import ENVIRONMENT from "./environments/environment"
 import COMPONENTS from './app/mapping'
@@ -39,6 +39,7 @@ class App extends Component {
 			init: false,
 			inPageEditor: false,
 			rootCmsPath: ENVIRONMENT.rootCmsPath,
+			serverPath: ENVIRONMENT.serverPath,
 			componentMap:COMPONENTS,
 			content: {},
 			templateDefinitions: {}
@@ -60,8 +61,9 @@ class App extends Component {
 
 				this.setState( {
 					init: true,
-					inPageEditor: this.inPageEditor(),
+					inPageEditor: inPageEditor(),
 					rootCmsPath: ENVIRONMENT.rootCmsPath,
+					serverPath: ENVIRONMENT.serverPath,
 					componentMap:COMPONENTS,
 					content: window.singlePageConfig.content,
 					templateDefinitions: window.singlePageConfig.templateDefinitions
@@ -89,16 +91,20 @@ class App extends Component {
 			this.useSampleData();
 		}else{
 
+			var fullURL = ENVIRONMENT.restUrlBase + ENVIRONMENT.rootCmsPath + relativePath
+			dlog("Request content from: " + fullURL);
+
 			//Loads the single page config
 			axios
-				.get(ENVIRONMENT.restUrlBase + ENVIRONMENT.rootCmsPath + relativePath)
+				.get(fullURL)
 				.then(response => {
 					dlog('***');
 					dlog("Content: got magnolia page content.")
 
 					this.setState( {
 						init: true,
-						inPageEditor: this.inPageEditor(),
+						inPageEditor: inPageEditor(),
+						serverPath: ENVIRONMENT.serverPath,
 						rootCmsPath: ENVIRONMENT.rootCmsPath,
 						componentMap: COMPONENTS,
 						content: response.data,
@@ -122,29 +128,33 @@ class App extends Component {
 
 		this.setState( {
 			init: true,
-			inPageEditor: this.inPageEditor(),
+			inPageEditor: inPageEditor(),
 			rootCmsPath: ENVIRONMENT.rootCmsPath,
+			serverPath: ENVIRONMENT.serverPath,
 			componentMap:COMPONENTS,
 			content: PAGE_MODEL,
 			templateDefinitions: TEMPLATE_DEFINITIONS
 		} );
 	}
 
-	inPageEditor(){
-		if (window.inPageEditor === true){
-			return true;
-		} else{
-			return false;
-		}
-	}
+
 
 
 	componentWillMount() {
 
 		// Use ReactRouter to handle route events when the browser URL changes.
     this.unlisten = this.props.history.listen((location, action) => {
-			
+
 			var relativePath = 	location.pathname;
+
+			if (this.state.inPageEditor){
+				// remove serverPath
+				relativePath = relativePath.substr(ENVIRONMENT.serverPath.length);
+			
+				// remove rootCmsPath
+				relativePath = relativePath.substr(ENVIRONMENT.rootCmsPath.length);
+			}
+
 			if (relativePath.indexOf('.')>-1){
 				relativePath = relativePath.substr(0, relativePath.lastIndexOf('.'));
 			}

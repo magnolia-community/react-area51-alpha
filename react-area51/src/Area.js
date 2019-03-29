@@ -39,7 +39,7 @@ class Area extends React.Component {
 			var fullCMSPath = this.props.path;
 
 			// We just want the path to the area within the current page. (Content only stores ONE page, and ITS contents.)
-			var relativeContentPath = this.getRelativePath(fullCMSPath);
+			var relativeContentPath = this.getRelativePath(fullCMSPath, this.context.serverPath);
 
 
 			if (cmsAreaName != null) {
@@ -49,7 +49,7 @@ class Area extends React.Component {
 		}
 	}
 
-	getRelativePath(fullCMSPath){
+	getRelativePath(fullCMSPath, serverPath){
 		var pathOfPage = window.location.pathname;
 		//Remove any extension.
 		if (pathOfPage.lastIndexOf('.')>0){
@@ -63,7 +63,14 @@ class Area extends React.Component {
 		}
 		
 		//debugger;
-		if (! this.context.inPageEditor){
+		if (this.context.inPageEditor){
+			
+			//Strip off the server path if there is one.
+			//pathOfPage = this.context.rootCmsPath + pathOfPage;
+			pathOfPage = pathOfPage.substr(serverPath.length);
+
+			dlog("gAC. IN page editor");
+		}else{
 			pathOfPage = this.context.rootCmsPath + pathOfPage;
 			dlog("gAC.not in page editor");
 		} 

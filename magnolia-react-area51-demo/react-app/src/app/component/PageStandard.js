@@ -47,8 +47,8 @@ class PageStandard extends Component {
 
 				<div className="container">
 
-					<h1 class="bd-title">{this.props.title}</h1>
-					<div class="component-name">Page Standard</div>
+					<h1 className="bd-title">{this.props.title}</h1>
+					<div className="component-name">Page Standard</div>
 					<div>
 						<div>
 							<Route path="/dashboard(.html)?/" />

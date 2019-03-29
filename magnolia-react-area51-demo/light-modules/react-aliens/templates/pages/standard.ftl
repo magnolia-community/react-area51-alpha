@@ -4,7 +4,7 @@ Default: Just get the content on this one page.
 -->
 <html lang="en">
 	<head>
-		<title>Magnolia Train Station</title>
+		<title>React Aliens</title>
 
 		<meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">

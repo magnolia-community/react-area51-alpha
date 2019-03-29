@@ -5,7 +5,7 @@ It gets subnodes and sub pages all in one tree.
 -->
 <html lang="en">
 	<head>
-		<title>Magnolia Train Station</title>
+		<title>React Aliens</title>
 
 		<meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
