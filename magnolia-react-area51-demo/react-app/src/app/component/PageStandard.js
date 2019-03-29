@@ -44,8 +44,6 @@ class PageStandard extends Component {
 	
     return (
 			<div>
-				<ul className="list-inline">
-				<SubNav spec={this.props} /></ul>
 
 				<div className="container">
 
