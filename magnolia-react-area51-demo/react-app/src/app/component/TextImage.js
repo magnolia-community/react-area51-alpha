@@ -4,19 +4,29 @@ import ENVIRONMENT from "../../environments/environment"
 
 class TextImage extends React.Component {
 
+
+
 	render() {
-		var damURL = ENVIRONMENT.damUrl + this.props.image;
+
+		function CleanImage(props) {
+			if (props.image) {
+			  var damURL = ENVIRONMENT.server + props.image.renditions['480'].link;
+		  
+			  return <img className="img-responsive" src={damURL} alt="TextIm alt."/>;
+			}
+			return null;
+		  }
 
 	    return (
 	    	<div>
 	    		<h5 className="light">{this.props.title}</h5>
 				<div>
-	    			<img className="img-responsive" src={damURL} alt=""/>
+	    			<CleanImage image={this.props.image} />
 	    		</div>
 	    		<div>
-					<p>{this.props.text}</p>
+					<p dangerouslySetInnerHTML={{__html:this.props.text}}></p>
 	    		</div>
-				<div class="component-name">TextImage</div>
+				<div className="component-name">TextImage</div>
 	    	</div>
 	    );
 	}

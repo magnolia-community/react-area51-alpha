@@ -28,6 +28,10 @@ footer li{
 	
 }
 
+.card{
+	margin-bottom: 10px;
+}
+
 .bd-title {
 	margin-top: 1rem;
 	margin-bottom: .5rem;
