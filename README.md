@@ -33,8 +33,11 @@ To work on the either of the libraries, in order to have the comfort of live upd
 4. In Magnolia Pages app, open `solar-system`, you should see the demo project (A React app!) and be able to edit it! (This is because the React app is deployed to `/light-modules/react-aliens/webresources/static`)
 
 
+
 ## React code
-To work on the either of the libraries, in order to have the comfort of live updates you will typically want to get the source code and have three simple terminal based development servers in three terminal tabs.
+Running the React App, outside of the Page Editor - aka in 'Headless' configuration:
+
+To work on the either of the libraries and the demo project, in order to have the comfort of live updates you will typically want to get the source code and have three simple terminal based development servers in three terminal tabs.
 
 **Setup:**
 
@@ -47,6 +50,8 @@ To work on the either of the libraries, in order to have the comfort of live upd
 * react-app
   * The demonstration project.
   * `npm install`
+
+TIP: if any of your `npm install`'s fails with a message about 'ast' module, try deleting the package-lock.json and running the install again.
 
 **Running the React development setup:**
 
@@ -63,10 +68,11 @@ With this setup, whenever you change any file in any of the projects, the full d
 * react-app
   * `npm start`
   * Opens running app in a browser.
+  * Depends on the `MagnoliaReactArea51.js` library.
 
 **Deploy:**
 
-To check the react-app in the Magnolia page editor, deploy the app to Magnolia by running:
+To apply the changes to react-app (and the libraries) in the Magnolia Page editor, deploy the app to Magnolia by running:
 `npm run build`
 
 
@@ -93,5 +99,7 @@ The React application loads the JSON with the content and stores this in a React
 
 The `Area` (and `Page`) components instantiate React components using React.createComponent(), and wrap each component with an HOC `withArea51` which grabs the appropriate content from the `Area51Context` and passes it directly as `props` to the component.
 
-![Area51 Architectural Diagram](_dev/README-react-area51.png)
+`withArea51` also provides the 'EditorHints' which allow the components to be managed in the CMS. 
+
+![Area51 Architectural Diagram](magnolia-react-area51-demo/_dev/README-react-area51.png)
 
