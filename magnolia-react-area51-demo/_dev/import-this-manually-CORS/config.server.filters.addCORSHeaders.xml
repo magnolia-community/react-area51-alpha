@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sv:node xmlns:sv="http://www.jcp.org/jcr/sv/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" sv:name="addCORSHeaders">
+  <sv:property sv:name="jcr:primaryType" sv:type="Name">
+    <sv:value>mgnl:content</sv:value>
+  </sv:property>
+  <sv:property sv:name="class" sv:type="String">
+    <sv:value>info.magnolia.cms.filters.AddHeadersFilter</sv:value>
+  </sv:property>
+  <sv:property sv:name="enabled" sv:type="String">
+    <sv:value>true</sv:value>
+  </sv:property>
+  <sv:node sv:name="bypasses">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>mgnl:contentNode</sv:value>
+    </sv:property>
+    <sv:node sv:name="bypassForEverythingElseThanRest">
+      <sv:property sv:name="jcr:primaryType" sv:type="Name">
+        <sv:value>mgnl:contentNode</sv:value>
+      </sv:property>
+      <sv:property sv:name="class" sv:type="String">
+        <sv:value>info.magnolia.voting.voters.URIStartsWithVoter</sv:value>
+      </sv:property>
+      <sv:property sv:name="not" sv:type="String">
+        <sv:value>true</sv:value>
+      </sv:property>
+      <sv:property sv:name="pattern" sv:type="String">
+        <sv:value>/.rest/</sv:value>
+      </sv:property>
+    </sv:node>
+  </sv:node>
+  <sv:node sv:name="headers">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>mgnl:contentNode</sv:value>
+    </sv:property>
+    <sv:property sv:name="Access-Control-Allow-Headers" sv:type="String">
+      <sv:value>X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept</sv:value>
+    </sv:property>
+    <sv:property sv:name="Access-Control-Allow-Methods" sv:type="String">
+      <sv:value>GET</sv:value>
+    </sv:property>
+    <sv:property sv:name="Access-Control-Allow-Origin" sv:type="String">
+      <sv:value>*</sv:value>
+    </sv:property>
+  </sv:node>
+</sv:node>
+

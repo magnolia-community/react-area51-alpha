@@ -1,9 +1,0 @@
-'config': 
-  jcr:primaryType: 'mgnl:content'
-  'engineConfiguration': 
-    'exposedComponents': 
-      'templateRegistry': 
-        'componentClass': 'info.magnolia.rendering.template.registry.TemplateDefinitionRegistry'
-        'name': 'templateRegistry'
-
-

@@ -19,15 +19,19 @@ The configuration stores both an ordered list of React components, and their con
 In an edit mode, Area51 adds markup or data attributes to the Area component and its child components to allow an external tool to add an editing UI to interact with the configuration.
 The Area51 library is CMS-agnostic, additional CMS-specific libraries can leverage it to connect to their editing UI and content structures.
 
-# How to develop these libraries and demo.
+# How to develop these libraries and demo (or just try it out).
 
 As the project is rapid development, we currently host three things in this repo, two libraries (react-area51, magnolia-react-area51) & a demo project (Area51 Aliens) that shows the nested areas and multipage support in action.
 
 To work on the either of the libraries, in order to have the comfort of live updates you will typically want to get the source code and have three simple terminal based development servers in three terminal tabs.
 
 1. Clone the repository
-2. Use mgnl CLI to install Magnolia 5.6.5+ in the directory. (`mgnl jumpstart`)
-3. Start magnolia and install the sample content in the pages app.
+2. Use the Magnolia CLI to install Magnolia 5.6.5+ in the directory. (Terminal: `mgnl jumpstart -m 5.7.2`. Tip: choose `magnolia-community-demo-webapp` because it will configure CORS for you.)
+3. To easily install necessary config and sample content, copy the contents from `_dev/import-this-manually` into `apache-tomcat/webapps/magnoliaAuthor/WEB-INF/bootstrap/common 
+`. (Otherwise use standard Magnolia import functionality to bring it in.)
+3. Start Magnolia. (Terminal: `mgnl start`)
+4. In Magnolia Pages app, open `solar-system`, you should see the demo project (A React app!) and be able to edit it! (This is because the React app is deployed to `/light-modules/react-aliens/webresources/static`)
+
 
 ## React code
 To work on the either of the libraries, in order to have the comfort of live updates you will typically want to get the source code and have three simple terminal based development servers in three terminal tabs.
@@ -84,4 +88,10 @@ Setup
 
 
 # Technical Details
+
+The React application loads the JSON with the content and stores this in a React Context `Area51Context`.
+
+The `Area` (and `Page`) components instantiate React components using React.createComponent(), and wrap each component with an HOC `withArea51` which grabs the appropriate content from the `Area51Context` and passes it directly as `props` to the component.
+
+![Area51 Architectural Diagram](_dev/README-react-area51.png)
 
