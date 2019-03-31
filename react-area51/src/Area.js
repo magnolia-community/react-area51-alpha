@@ -36,7 +36,7 @@ class Area extends React.Component {
 
 			var cmsAreaName = this.props.cmsAreaName;
 
-			var fullCMSPath = this.props.path;
+			var fullCMSPath = this.props.parentPath;
 
 			// We just want the path to the area within the current page. (Content only stores ONE page, and ITS contents.)
 			var relativeContentPath = this.getRelativePath(fullCMSPath, this.context.serverPath);
@@ -50,6 +50,7 @@ class Area extends React.Component {
 	}
 
 	getRelativePath(fullCMSPath, serverPath){
+		
 		var pathOfPage = window.location.pathname;
 		//Remove any extension.
 		if (pathOfPage.lastIndexOf('.')>0){
@@ -97,11 +98,11 @@ class Area extends React.Component {
 			if (cmsAreaName != null) {
 
 				// Get the Area Definiiton.
-				const templateId = this.props.parentComponentID;	
+				const templateId = this.props.parentTemplateID;	
 				const areaDefinition = contextService.getAreaDefinitionFromTemplate(templateId, cmsAreaName);
 
 				// Add the Editor Hints
-				var fullCMSPath = this.props.path;
+				var fullCMSPath = this.props.parentPath;
 				let currentNode = ReactDOM.findDOMNode(this);
 
 				//debugger;

@@ -103,16 +103,16 @@ class Navigation extends Component {
 	
     return (
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav className="navbar navbar-expand-sm navbar-dark bg-dark">
 	
 	<Link to={getLink(ENVIRONMENT.rootCmsPath, ENVIRONMENT.serverPath, ENVIRONMENT.rootCmsPath, inPageEditor())} className="navbar-brand">{this.state.nav.title}</Link>
 	
-	<div class="navbar-collapse">	
-		<div class="nav-stack">
-			<ul class="navbar-nav">
+	<div className="navbar-collapse">	
+		<div className="nav-stack">
+			<ul className="navbar-nav">
 				<MenuItems spec={this.state.nav} context={this.context} class1="nav-item" class2="nav-link" />
 			</ul>
-			<ul class="navbar-nav">
+			<ul className="navbar-nav">
 					<MenuItems spec={subNavOfThisPage} context={this.context}  class1="nav-item" class2="nav-link" />
 			</ul>
 		</div>
@@ -142,8 +142,8 @@ const MenuItems = (props) => {
 
 	return items.map(item => (
    
-		<li key={item['@path']}  class={props.class1}>
-			<Link class={props.class2} to={getLink(item['@path'], ENVIRONMENT.serverPath, ENVIRONMENT.rootCmsPath, inPageEditor())}>{item.title}</Link>
+		<li key={item['@path']}  className={props.class1}>
+			<Link className={props.class2} to={getLink(item['@path'], ENVIRONMENT.serverPath, ENVIRONMENT.rootCmsPath, inPageEditor())}>{item.title}</Link>
 		</li>
   
 	))

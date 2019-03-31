@@ -12,31 +12,31 @@ class PageStandard extends Component {
    */
   render() {
 
-	let parentComponentID = this.props["mgnl:template"];
-	let path = this.props["@path"];
+	let parentTemplateID = this.props["mgnl:template"];
+	let parentPath = this.props["@path"];
 
 	var row1 = [
 		{
       className: "col-xs-12 col-md-6",
-			path: path,
+			parentPath: parentPath,
 			cmsAreaName: "left",
-			parentComponentID: parentComponentID
+			parentTemplateID: parentTemplateID
 		}
     ,
 		{
 			className: "col-xs-12 col-md-6",
-			path: path,
+			parentPath: parentPath,
 			cmsAreaName: "right",
-			parentComponentID: parentComponentID
+			parentTemplateID: parentTemplateID
 		}
 	];
 
 	var row2 = [
 		{
       className: "col-xs-12",
-			path: path,
+			parentPath: parentPath,
 			cmsAreaName: "schedule",
-			parentComponentID: parentComponentID
+			parentTemplateID: parentTemplateID
 		}
 	];
 

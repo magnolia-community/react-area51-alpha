@@ -1,6 +1,5 @@
 import React from 'react';
 
-//import Area from '../magnolia/Area';
 import {Area} from 'magnolia-react-area51';
 
 import {dlog} from '../AppHelpers';
@@ -15,9 +14,9 @@ class Column extends React.Component {
 		return (
 	    	<div className={this.props.column.className}>
 				<Area
-					path={this.props.column.path}
 					cmsAreaName={this.props.column.cmsAreaName}
-					parentComponentID={this.props.column.parentComponentID}
+					parentPath={this.props.column.parentPath}
+					parentTemplateID={this.props.column.parentTemplateID}
 					/>
 	    	</div>
 	    );

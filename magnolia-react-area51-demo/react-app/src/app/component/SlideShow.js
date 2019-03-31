@@ -12,7 +12,7 @@ function DebugInfo(props) {
 	    <div className="debug">
 				<div>title:{props.title}</div>
 				<div>path:{props["@path"]}</div>
-				<div>parentComponentID:{props["mgnl:template"]}</div>
+				<div>parentTemplateID:{props["mgnl:template"]}</div>
 	    </div>
 	  );
 	}else{
@@ -35,9 +35,9 @@ class SlideShow extends React.Component {
 
 				<Area
 					className="slides"
-					path={this.props["@path"]}
+					parentPath={this.props["@path"]}
 					cmsAreaName="main"
-					parentComponentID={this.props["mgnl:template"]}
+					parentTemplateID={this.props["mgnl:template"]}
 				/>
 				
 			</div>
