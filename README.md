@@ -12,6 +12,10 @@ Capabilities
 * Supports nested components.
 * Supports multiple pages.
 
+Screenshot of React Demo Project being edited in a CMS.
+![Area51 Demo Project in Magnolia](magnolia-react-area51-demo/_dev/README-demo-project.jpg)
+
+
 # How Area51 works
 
 Area51 provides an `Area` React component that is dynamically populated with React components and content based on a JSON configuration, typically from a CMS REST endpoint.
@@ -23,7 +27,9 @@ The Area51 library is CMS-agnostic, additional CMS-specific libraries can levera
 
 As the project is rapid development, we currently host three things in this repo, two libraries (react-area51, magnolia-react-area51) & a demo project (Area51 Aliens) that shows the nested areas and multipage support in action.
 
-To work on the either of the libraries, in order to have the comfort of live updates you will typically want to get the source code and have three simple terminal based development servers in three terminal tabs.
+This Git repo contains binding to a simple Magnolia CMS project for demonstration purposes.
+ 
+ **Setup Magnolia CMS:**
 
 1. Clone the repository
 2. Use the Magnolia CLI to install Magnolia 5.6.5+ in the directory. (Terminal: `mgnl jumpstart -m 5.7.2`. Tip: choose `magnolia-community-demo-webapp` because it will configure CORS for you.)
@@ -39,7 +45,7 @@ Running the React App, outside of the Page Editor - aka in 'Headless' configurat
 
 To work on the either of the libraries and the demo project, in order to have the comfort of live updates you will typically want to get the source code and have three simple terminal based development servers in three terminal tabs.
 
-**Setup:**
+**Setup React Code:**
 
 * react-area51
   * The base library. 
