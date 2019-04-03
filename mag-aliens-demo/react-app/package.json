@@ -10,7 +10,7 @@
     "magnolia-react-area51": "file:../../magnolia-react-area51"
   },
   "devDependencies": {
-    "react-scripts": "2.1.5",
+    "react-scripts": "^2.1.8",
     "rewire": "^4.0.1"
   },
   "scripts": {
@@ -23,6 +23,10 @@
     "copy:css": "cp build/static/css/* ../light-modules/react-aliens/webresources/static/css ",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/magnolia-community/react-area51-alpha/"
   },
   "browserslist": [
     ">0.2%",
