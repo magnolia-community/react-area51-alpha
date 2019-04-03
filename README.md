@@ -13,7 +13,7 @@ Capabilities
 * Supports multiple pages.
 
 Screenshot of React Demo Project being edited in a CMS.
-![Area51 Demo Project in Magnolia](magnolia-react-area51-demo/_dev/README-demo-project.jpg)
+![Area51 Demo Project in Magnolia](mag-aliens-demo/_dev/README-demo-project.jpg)
 
 
 # How Area51 works
@@ -23,29 +23,43 @@ The configuration stores both an ordered list of React components, and their con
 In an edit mode, Area51 adds markup or data attributes to the Area component and its child components to allow an external tool to add an editing UI to interact with the configuration.
 The Area51 library is CMS-agnostic, additional CMS-specific libraries can leverage it to connect to their editing UI and content structures.
 
-# How to develop these libraries and demo (or just try it out).
 
-As the project is rapid development, we currently host three things in this repo, two libraries (react-area51, magnolia-react-area51) & a demo project (Area51 Aliens) that shows the nested areas and multipage support in action.
+# Setup
+ 
+## How to develop these libraries and demo (or just try it out).
 
-This Git repo contains binding to a simple Magnolia CMS project for demonstration purposes.
+As the project is in rapid development, we currently host three things in this repo, two libraries (react-area51, magnolia-react-area51) & a demo project (Area51 Aliens) that shows the nested areas and multipage support in action.
+
+### Requirements
+* Java SE JDK (Tested on v1.8.0_151)
+* Node (Tested on v10.15.0)
+* mgnl, the Magnolia CLI (Tested on v3.0.7) (Install globally with `npm -g @magnolia/cli`.)
  
  **Setup Magnolia CMS:**
 
-1. Clone the repository
-2. Use the Magnolia CLI to install Magnolia 5.6.5+ in the directory. (Terminal: `mgnl jumpstart -m 5.7.2`. Tip: choose `magnolia-community-demo-webapp` because it will configure CORS for you.)
-3. To easily install necessary config and sample content, copy the contents from `_dev/import-this-manually` into `apache-tomcat/webapps/magnoliaAuthor/WEB-INF/bootstrap/common 
+This Git repo contains binding to a simple Magnolia CMS project for demonstration purposes.
+
+1. Clone this git repository
+2. Go into the demo project directory: `react-area51-alpha/mag-aliens-demo`.
+3. Use the Magnolia CLI to install Magnolia 5.6.5+ in the directory: `mgnl jumpstart -m 5.7.2`. 
+   * Choose option 3, `magnolia-community-demo-webapp` because it will configure CORS for you.
+4. To easily install necessary config and sample content, copy the contents from `_dev/import-this-manually` into `apache-tomcat/webapps/magnoliaAuthor/WEB-INF/bootstrap/common 
 `. (Otherwise use standard Magnolia import functionality to bring it in.)
-3. Start Magnolia. (Terminal: `mgnl start`)
-4. In Magnolia Pages app, open `solar-system`, you should see the demo project (A React app!) and be able to edit it! (This is because the React app is deployed to `/light-modules/react-aliens/webresources/static`)
+5. Start Magnolia server:`mgnl start`, and open it in a browser: `http://localhost:8080/magnoliaAuthor/`. 
+   * Username: superuser. Password: superuser.
+6. Open `Pages` app. Open `solar-system`. You should see the React demo project, and be able to edit it! (This is because the React app is already deployed to `/light-modules/react-aliens/webresources/static`)
 
 
 
 ## React code
 Running the React App, outside of the Page Editor - aka in 'Headless' configuration:
 
-To work on the either of the libraries and the demo project, in order to have the comfort of live updates you will typically want to get the source code and have three simple terminal based development servers in three terminal tabs.
+To work on the either of the libraries and the demo project with the comfort of live updates, you will typically want to get the source code (Currently all in this repository already.) and have three simple development servers running in three terminal tabs.
 
 **Setup React Code:**
+
+1. Open three terminal tabs.
+2. Go to each of these directories and install the npm package:
 
 * react-area51
   * The base library. 
@@ -53,11 +67,11 @@ To work on the either of the libraries and the demo project, in order to have th
 * magnolia-react-area51
   * The CMS-specific library, for Magnolia.
   * `npm install`
-* react-app
+* mag-aliens-demo/react-app
   * The demonstration project.
   * `npm install`
 
-TIP: if any of your `npm install`'s fails with a message about 'ast' module, try deleting the package-lock.json and running the install again.
+**TIP**: if any of your `npm install`'s has an error 'no such file or directory' with a message about '@webassemblyjs/ast' module, then try deleting the package-lock.json in that directory and running the install again.
 
 **Running the React development setup:**
 
@@ -71,14 +85,16 @@ With this setup, whenever you change any file in any of the projects, the full d
   * `npm run build`
   * Runs webpack with a watch configuration.
   * Builds `./lib/MagnoliaReactArea51.js`
-* react-app
+* mag-aliens-demo/react-app
   * `npm start`
   * Opens running app in a browser.
   * Depends on the `MagnoliaReactArea51.js` library.
+  
+Now try changing any content in the Magnolia Pages app, then refresh this app and notice that it reflects your content changes!
 
 **Deploy:**
 
-To apply the changes to react-app (and the libraries) in the Magnolia Page editor, deploy the app to Magnolia by running:
+Any code changes you make to react-app (and the libraries) must be deployed to the Magnolia instance, in order to be available in the Pages app. Deploy the app to Magnolia by running:
 `npm run build`
 
 
@@ -86,16 +102,16 @@ To apply the changes to react-app (and the libraries) in the Magnolia Page edito
 
 *Note: this is how it will work once we leave Alpha. For now both libraries and the demo are in this one project to facilitate experimentation and development.*
 
-Find the Area51 library for your CMS or editor. If one does not exist you will need to create one.
+Find the Area51 library for your CMS or editor. (If one does not exist you will need to create one.)
 Setup
 * Install the Area51 npm package. (It provides `Area` and `Page` components.) (Not existing yet, just use a 'file' reference in the package.json)
-* Place `Area` (or `Page`) components in your existing React app wherever you want externally managed components. [Example](magnolia-react-area51-demo/react-app/src/app/component/SlideShow.js)
+* Place `Area` (or `Page`) components in your existing React app wherever you want externally managed components. [Example](mag-aliens-demo/react-app/src/app/component/SlideShow.js)
 * Configure these props on your Area components:
   * cmsAreaName: The name of the corresponding area in your CMS.
   * parentPath: The full path to the CMS content node that will hold the areas contents. (Typically dynamically generated.)
   * parentTemplateId: The name/ID of the template of the node hosting this area in your CMS.
-* Create a mapping configuration file so Area51 can map the template ID's in your CMS with the React components to be instantiated. You can use **any** React component. [Example](magnolia-react-area51-demo/react-app/src/app/mapping.js)
-* Configure the environment variables to point to your CMS instance. [Example](magnolia-react-area51-demo/react-app/src/environments/environment.js)
+* Create a mapping configuration file so Area51 can map the template ID's in your CMS with the React components to be instantiated. You can use **any** React component. [Example](mag-aliens-demo/react-app/src/app/mapping.js)
+* Configure the environment variables to point to your CMS instance. [Example](mag-aliens-demo/react-app/src/environments/environment.js)
 * Modify the package.json `clean` and `copy` npm scripts to deploy to your CMS location.
 
 
@@ -107,5 +123,5 @@ The `Area` (and `Page`) components instantiate React components using React.crea
 
 `withArea51` also provides the 'EditorHints' which allow the components to be managed in the CMS. 
 
-![Area51 Architectural Diagram](magnolia-react-area51-demo/_dev/README-react-area51.png)
+![Area51 Architectural Diagram](mag-aliens-demo/_dev/README-react-area51.png)
 
