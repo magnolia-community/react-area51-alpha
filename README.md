@@ -1,7 +1,7 @@
 # Area51
-Area51 allows mysterious alien content to take control of your React app.
+Area51 allows mysterious alien content to take control of your React app. :alien:
 
-*This is software in development. Alpha. Subject to frequent change.*
+**This is software in development. Alpha. Subject to frequent change. :warning:**
 
 Area51 enables content authors to manage the actual structure and layout of a React app, not just the content items. It was created to re-empower non-developers to create and edit React-based websites and other digital experiences. Area51 connects the modern component-architecture of React, with the component concept of CMS page editors.
 It does not include an editing tool itself, but provides the infrastructure an editing UI can plug into.
@@ -35,7 +35,7 @@ As the project is in rapid development, we currently host three things in this r
 * Node (Tested on v10.15.0)
 * mgnl, the Magnolia CLI (Tested on v3.0.7) (Install globally with `npm -g @magnolia/cli`.)
  
- **Setup Magnolia CMS:**
+### Setup Demo on Magnolia CMS (~10 minutes)
 
 This Git repo contains binding to a simple Magnolia CMS project for demonstration purposes.
 
@@ -47,11 +47,12 @@ This Git repo contains binding to a simple Magnolia CMS project for demonstratio
 `. (Otherwise use standard Magnolia import functionality to bring it in.)
 5. Start Magnolia server:`mgnl start`, and open it in a browser: `http://localhost:8080/magnoliaAuthor/`. 
    * Username: superuser. Password: superuser.
-6. Open `Pages` app. Open `solar-system`. You should see the React demo project, and be able to edit it! (This is because the React app is already deployed to `/light-modules/react-aliens/webresources/static`)
+6. Open `Pages` app. Open `solar-system`. You should see the React demo project, and be able to edit it! :boom: (This is because the React app is already deployed to `/light-modules/react-aliens/webresources/static`)
 
 
 
-## React code
+
+### React code (~15 minutes)
 Running the React App, outside of the Page Editor - aka in 'Headless' configuration:
 
 To work on the either of the libraries and the demo project with the comfort of live updates, you will typically want to get the source code (Currently all in this repository already.) and have three simple development servers running in three terminal tabs.
@@ -90,7 +91,9 @@ With this setup, whenever you change any file in any of the projects, the full d
   * Opens running app in a browser.
   * Depends on the `MagnoliaReactArea51.js` library.
   
-Now try changing any content in the Magnolia Pages app, then refresh this app and notice that it reflects your content changes!
+Now try changing any content in the Magnolia Pages app, then refresh this app and notice that it reflects your content changes! :fire:
+
+
 
 **Deploy:**
 
@@ -98,9 +101,9 @@ Any code changes you make to react-app (and the libraries) must be deployed to t
 `npm run build`
 
 
-# How to Use Area51 in your React project (Eventually!)
+# How to Use Area51 in your React project (When we're out of Alpha! :telescope:)
 
-*Note: this is how it will work once we leave Alpha. For now both libraries and the demo are in this one project to facilitate experimentation and development.*
+**Note: this is how it will work once we leave Alpha. For now both libraries and the demo are in this one project to facilitate experimentation and development.**
 
 Find the Area51 library for your CMS or editor. (If one does not exist you will need to create one.)
 Setup
@@ -114,14 +117,33 @@ Setup
 * Configure the environment variables to point to your CMS instance. [Example](mag-aliens-demo/react-app/src/environments/environment.js)
 * Modify the package.json `clean` and `copy` npm scripts to deploy to your CMS location.
 
+# Known Issues :grimacing:
 
-# Technical Details
+* When a new page, or a new component is created which contains areas, Magnolia will not create the necessary area nodes in the 'JCR' backend. Therefore when playing with the demo, you can copy an existing page, or you can go into the 'JCR Browser' app and copy area nodes from one page to a new page.
+* The Magnolia Page Editor runs javascript when the page loads in order to scan the page for 'EditHints' and insert the green 'EditBars'. This means if a React app is dynamic and later shows a new component, that new component will not have green EditBars, because the component was not in the DOM at the time the Magnolia javascript ran.
+
+
+## Things to improve
+Not bugs, but lets improve these:
+* Use real environment variables.
+* Add tests.
+* Make the Content JSON parsing 'pluggable'.
+* Get rid of flickering when changing Routes.
+* Move the mapping.js to an external file.
+
+# Technical Details :triangular_ruler:
 
 The React application loads the JSON with the content and stores this in a React Context `Area51Context`.
 
-The `Area` (and `Page`) components instantiate React components using React.createComponent(), and wrap each component with an HOC `withArea51` which grabs the appropriate content from the `Area51Context` and passes it directly as `props` to the component.
+The `Area` components instantiate React components using React.createComponent(), and wrap each component with an HOC `withArea51` which grabs the appropriate content from the `Area51Context` and passes it directly as `props` to the component.
 
-`withArea51` also provides the 'EditorHints' which allow the components to be managed in the CMS. 
+`withArea51` also provides the 'EditorHints' which are included in the DOM to allow the components to be managed in the CMS. 
 
 ![Area51 Architectural Diagram](mag-aliens-demo/_dev/README-react-area51.png)
 
+
+### Contributors
+
+* Adrien Manzoni, [Magnolia](https://documentation.magnolia-cms.com)
+* Christopher Zimmermann, [Magnolia](https://documentation.magnolia-cms.com)
+* *Your name here!* :grinning:
