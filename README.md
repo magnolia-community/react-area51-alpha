@@ -106,7 +106,9 @@ Any code changes you make to react-app (and the libraries) must be deployed to t
 **Note: this is how it will work once we leave Alpha. For now both libraries and the demo are in this one project to facilitate experimentation and development.**
 
 Find the Area51 library for your CMS or editor. (If one does not exist you will need to create one.)
-Setup
+
+**Setup**
+* Start with your own existing React project. (Or just copy the `mag-aliens-demo/react-app` directory.)
 * Install the Area51 npm package. (It provides `Area` and `Page` components.) (Not existing yet, just use a 'file' reference in the package.json)
 * Place `Area` (or `Page`) components in your existing React app wherever you want externally managed components. [Example](mag-aliens-demo/react-app/src/app/component/SlideShow.js)
 * Configure these props on your Area components:
