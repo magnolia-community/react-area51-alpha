@@ -1,7 +1,6 @@
-import ENVIRONMENT from "../environments/environment";
 
 export function dlog(message) {
-  if (ENVIRONMENT.DEBUG_MODE) {
+  if (process.env.REACT_APP_LOG_LEVEL > 0) {
     console.log(message);
   }
 }

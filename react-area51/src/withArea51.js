@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Area51Context from "./Area51Context";
 
-/* This is an HOC that can be used to make any React component 
+/** This is an HOC that can be used to make any React component 
 "content managed" with a CMS / Page Editor.
 
 It sets the Area51Context.
@@ -11,10 +11,8 @@ It adds EditorHints when in a content editor.
 Note that the content from the CMS is passed to the component
 by the Area when it instantiates it. That is not happening in this function.
 */
-
-// This function takes a component, and a CTXService, and an EditorHintHelper...
 function withArea51(WrappedComponent, CTXService, EditorHintHelper, isPage) {
-  // ...and returns another component...
+  // ...Returns another component...
   return class extends React.Component {
     // Use React Context API.
     // 'this.context' now contains the context managed in Area51Context.
@@ -25,9 +23,8 @@ function withArea51(WrappedComponent, CTXService, EditorHintHelper, isPage) {
       var contextService = new CTXService(this.context);
       if (contextService.isEditionMode() && this.props != null) {
         let currentNode = ReactDOM.findDOMNode(this);
-        console.log("AEH:" + currentNode);
         //debugger;
-        console.log("AEH-OUT:" + this.simpleGetProps(currentNode));
+        //console.log("AEH-OUT:" + this.simpleGetProps(currentNode));
         if (!currentNode){
           return;
         }
@@ -39,13 +36,11 @@ function withArea51(WrappedComponent, CTXService, EditorHintHelper, isPage) {
 
     simpleGetProps = function(o){
       var str='';
-  
       for(var p in o){
           if(typeof o[p] == 'string'){
               str+= p + ': ' + o[p]+'; \n';
           }
       }
-  
       return str;
   }
 

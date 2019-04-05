@@ -38,7 +38,7 @@ export function instantiateReactComponent(
 }
 
 export function dlog(message) {
-  if (true) {
+  if (process.env.REACT_APP_LOG_LEVEL > 0) {
     console.log(message);
   }
 }

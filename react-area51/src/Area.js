@@ -26,45 +26,52 @@ class Area extends React.Component {
 
   /**
    * Returns the components (with their managed content) as an array of objects.
+   * ASSUMPTION, that areas have their own nodes in the content structure.
+   * 
+   * @param {*} cmsAreaName The name of the area in the CMS. 
+   * @param {*} fullCmsPath The full path to the parent node of the area, in the CMS.
+   * @param {*} contextService The context service for this CMS.
    */
-  getAreaComponents(cmsAreaName, fullCMSPath, contextService) {
+  getAreaComponents(cmsAreaName, fullCmsPath, contextService) {
     dlog("getAreasComponents.contentinit?" + this.context.init.toString());
 
-    if (this.context.content != null) {
-
-      // We just want the path to the area within the current page. (Content only stores ONE page, and ITS contents.)
-      var pathInPage = this.getPathInPage(
-        fullCMSPath,
-        window.location.pathname,
-        this.context.serverPath,
-        this.context.rootCmsPath,
-        this.context.inPageEditor
-      );
-
-      if (cmsAreaName != null) {
-        var actualComponents = Object.values(
-          contextService.getAreaComponents(cmsAreaName, pathInPage)
-        );
-        return actualComponents;
-      }
+    if (!this.context.content) {
+      return;
     }
+
+    // We just want the path to the area within the current page. (Content only stores ONE page, and ITS contents.)
+    var pathInPage = this.getPathInPage(
+      fullCmsPath,
+      window.location.pathname,
+      this.context.serverPath,
+      this.context.rootCmsPath,
+      this.context.inPageEditor
+    );
+
+    if (cmsAreaName != null) {
+      var actualComponents = Object.values(
+        contextService.getAreaComponents(cmsAreaName, pathInPage)
+      );
+      return actualComponents;
+    }
+    
   }
 
   /**
-   * From the 'fullCMSPath' of a node, get just the path of the node relative to the page it is on.
-   * @param {*} fullCMSPath 
+   * From the 'fullCmsPath' of a node, get just the path of the node relative to the page it is on.
+   * @param {*} fullCmsPath 
    * @param {*} serverPath 
    * @param {*} rootCmsPath 
    */
-  getPathInPage(fullCMSPath, urlPath, serverPath, rootCmsPath, inPageEditor) {
+  getPathInPage(fullCmsPath, urlPath, serverPath, rootCmsPath, inPageEditor) {
     var pathOfPage = this.getPathOfPage(urlPath, serverPath, rootCmsPath, inPageEditor);
 
     // Strip off the pathOfPage from the front.
-    var pathInPage = fullCMSPath.substr(pathOfPage.length);
+    var pathInPage = fullCmsPath.substr(pathOfPage.length);
 
     dlog("gAC.window.location: " + window.location.pathname);
     dlog("gAC.rootCmsPath: " + rootCmsPath);
-    dlog("gAC.fullCMSPath: " + fullCMSPath);
+    dlog("gAC.fullCmsPath: " + fullCmsPath);
     dlog("gAC.pathOfPage: " + pathOfPage);
     dlog("gAC.pathInPage: " + pathInPage);
 
@@ -99,35 +106,37 @@ class Area extends React.Component {
 
   addEditorHint_forArea(contextService) {
     
-    if (contextService.isEditionMode()) {
-      var cmsAreaName = this.props.cmsAreaName;
-      if (cmsAreaName != null) {
-        // Get the Area Definiiton.
-        const templateId = this.props.parentTemplateID;
-        const areaDefinition = contextService.getAreaDefinitionFromTemplate(
-          templateId,
-          cmsAreaName
-        );
-
-        // Add the Editor Hints
-        var fullCMSPath = this.props.parentPath;
-        let currentNode = ReactDOM.findDOMNode(this);
-
-        //debugger;
-        var editorHintHelper = new this.props.EditorHintHelper();
-        editorHintHelper.addAreaHint(currentNode, areaDefinition, fullCMSPath);
-      }
+    if (!contextService.isEditionMode()) {
+      return;
     }
+
+    var cmsAreaName = this.props.cmsAreaName;
+    if (!cmsAreaName) {
+      return;
+    }
+
+    // Get the Area Definiiton.
+    const templateId = this.props.parentTemplateID;
+    const areaDefinition = contextService.getAreaDefinitionFromTemplate(
+      templateId,
+      cmsAreaName
+    );
+
+    // Add the Editor Hints
+    var fullCmsPath = this.props.parentPath;
+    let currentNode = ReactDOM.findDOMNode(this);
+
+    var editorHintHelper = new this.props.EditorHintHelper();
+    editorHintHelper.addAreaHint(currentNode, areaDefinition, fullCmsPath);
+  
   }
 
   componentDidMount() {
-    //dlog("Area didMount: " + this.props.cmsAreaName)
     var contextService = new this.props.CTXService(this.context);
     this.addEditorHint_forArea(contextService);
   }
 
   componentDidUpdate() {
-    //dlog("Area didUpdate: " + this.props.cmsAreaName)
     var contextService = new this.props.CTXService(this.context);
     this.addEditorHint_forArea(contextService);
   }

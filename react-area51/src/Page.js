@@ -8,11 +8,10 @@ import { dlog } from "./Helpers";
 class Page extends React.Component {
   // Use React Context API.
   // 'this.context' now contains the context managed in Area51Context.
-  // This enables the managed content to be passed into the components.
   static contextType = Area51Context;
 
   /**
-   * Returns the components (with their managed content) as an array of objects.
+   * Returns the CMS managed content of the page node itself.
    */
   getPage() {
     dlog("getPage.contentinit?" + this.context.init.toString());

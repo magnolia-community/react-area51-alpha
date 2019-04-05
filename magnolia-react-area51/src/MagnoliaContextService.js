@@ -22,18 +22,17 @@ MagnoliaContextService.prototype.getAreaDefinitionFromTemplate = function(
   templateId,
   cmsAreaName
 ) {
-  if (this.context.templateDefinitions) {
-    let definition = this.context.templateDefinitions[templateId];
-
-    if (definition) {
-      let area = definition.areas[cmsAreaName];
-      return area;
-    } else {
-      return null;
-    }
-  } else {
+  if (!this.context.templateDefinitions) {
     return null;
   }
+
+  let definition = this.context.templateDefinitions[templateId];
+  if (!definition) {
+    return null;
+  }
+
+  let area = definition.areas[cmsAreaName];
+  return area;
 };
 
 /**
@@ -44,80 +43,88 @@ MagnoliaContextService.prototype.getCurrentNode = function() {
 };
 
 /**
- * Return the compontents (actual content) of an area.
+ * Return the components (actual content) of an area.
  *
  * @param cmsAreaName The name of the area
- * @param relativeContentPath The 'path' to the content item 'in the tree' below the CmsRootPath (the mapping point between the app and the cms.).
+ * @param pathInPage The 'path' to the content item 'in the tree' below the CmsRootPath (the mapping point between the app and the cms.).
  */
 MagnoliaContextService.prototype.getAreaComponents = function(
   cmsAreaName,
-  relativeContentPath
+  pathInPage
 ) {
   var results = [];
   if (!this.context.content) {
     return results;
   }
 
-  const getNestedObject = (nestedObj, pathArr) => {
-    return pathArr.reduce(
-      (obj, key) => (obj && obj[key] !== "undefined" ? obj[key] : undefined),
-      nestedObj
-    );
-  };
-
   var content = this.context.content;
 
   if (content && typeof content !== "undefined") {
-    var location = relativeContentPath.split("/").slice(1);
+    var location = pathInPage.split("/").slice(1);
     location.push(cmsAreaName);
     dlog("getAreaComponents: location:" + JSON.stringify(location, null, 2));
 
     //Get ONLY the content of the current area by diving into the full content tree.
     var areaContent = getNestedObject(content, location);
-
-    if (areaContent != null) {
-      var components = areaContent["@nodes"];
-
-      // eslint-disable-next-line
-      components.map(nodeName => {
-        var value = areaContent[nodeName];
-
-        if (
-          typeof value === "object" &&
-          value["jcr:primaryType"] === "mgnl:component"
-        ) {
-          dlog(
-            "Error - update to the newer delivery endpoint that outputs @nodeType instead of jcr:primaryType."
-          );
-        }
-
-        if (
-          typeof value === "object" &&
-          value["@nodeType"] === "mgnl:component"
-        ) {
-          // Get the templateDefinition in order to get the dialog for the editor hints.
-          if (this.isEditionMode()) {
-            //Gets the template
-            var templateId = value["mgnl:template"];
-            //debugger;
-            var template = this.getTemplate(templateId);
-            value.templateDefinition = template;
-            //console.log("CTX: def:" + templateId)
-            //console.log("CTX: temp:" + JSON.stringify(template,null,2))
-          }
-
-          results.push(value);
-        }
-      });
+    if (!areaContent) {
+      return
     }
+
+    var components = areaContent["@nodes"];
+
+    // eslint-disable-next-line
+    components.map(nodeName => {
+
+      //Handle the odd Magnolia endpoint - dereference the nodes based on the array.
+      var node = areaContent[nodeName];
+
+      if (
+        typeof node === "object" &&
+        node["jcr:primaryType"] === "mgnl:component"
+      ) {
+        dlog(
+          "Error - update to the newer delivery endpoint that outputs @nodeType instead of jcr:primaryType."
+        );
+      }
+
+      if (
+        typeof node === "object" &&
+        node["@nodeType"] === "mgnl:component"
+      ) {
+        // Get the templateDefinition in order to get the dialog for the editor hints.
+        if (this.isEditionMode()) {
+          //Gets the template
+          var templateId = node["mgnl:template"];
+          var template = this.getTemplate(templateId);
+          node.templateDefinition = template;
+          //dlog("CTX: def:" + templateId)
+          //dlog("CTX: temp:" + JSON.stringify(template,null,2))
+        }
+
+        results.push(node);
+      }
+    });
   }
   return results;
 };
 
 /**
+ * Get a subObject from an object by means of an array of nodes to go into.
+ * @param {*} parentObj 
+ * @param {*} pathArr Array of nodes to go into.
+ */
+const getNestedObject = (parentObj, pathArr) => {
+  return pathArr.reduce(
+    (obj, key) => (obj && obj[key] !== "undefined" ? obj[key] : undefined),
+    parentObj
+  );
+};
+
+
+/**
  * Return the actual content of a page.
  * (Similar to getAreaComponents)
- * Current model is that the content object always has the current page at the top.
+ * ASSUMPTION: Current model is that the content object always has the current page at the top.
  */
 MagnoliaContextService.prototype.getPage = function() {
   return this.context.content;
@@ -138,8 +145,6 @@ MagnoliaContextService.prototype.getTemplate = function(templateId) {
 
 /**
  * Return whether the page is in edition mode
- *
- * @return Whether the page is in edition mode
  */
 MagnoliaContextService.prototype.isEditionMode = function() {
   if (!this.context) {
@@ -150,7 +155,7 @@ MagnoliaContextService.prototype.isEditionMode = function() {
 };
 
 function dlog(message) {
-  if (true) {
+  if (process.env.REACT_APP_LOG_LEVEL > 0) {
     console.log(message);
   }
 }

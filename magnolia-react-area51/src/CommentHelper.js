@@ -1,7 +1,14 @@
 /**
- * Manage Wrapping HTML Comments for a React component.
+ * Utility to 'wrap' a React component in HTML comments,
+ * Injecting two HTML comments, one before and one after the component.
  */
 function CommentHelper() {}
+
+function dlog(message) {
+  if (process.env.REACT_APP_LOG_LEVEL > 0) {
+    console.log(message);
+  }
+}
 
 /**
  */
@@ -20,7 +27,7 @@ CommentHelper.prototype.addWrappingComments = function(
     return;
   }
 
-  console.log("addWrappingComments:" + parentNode);
+  dlog("addWrappingComments:" + parentNode);
 
   // Delete pageEditor comments if they were already created - so that they will be updated when state changes.
   let prev = currentNode.previousSibling;
