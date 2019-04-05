@@ -2,13 +2,8 @@ renderType: freemarker
 title: Alien Slide Show
 dialog: magnolia-aliens:components/slideshow
 
-templateScript: magnolia-aliens/templates/components/slideshow.ftl
-
-
 areas:
   main:
-    # renderType: freemarker
-    # type: list
     createAreaNode: true
     availableComponents:
       text-image:
