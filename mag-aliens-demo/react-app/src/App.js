@@ -26,7 +26,7 @@ class App extends Component {
     dlog("***");
     dlog("App Constructor.");
 
-    this.USE_SAMPLE_DATA = false;
+    this.USE_SAMPLE_DATA = true;
 
     this.loadPageContent = this.loadPageContent.bind(this);
 
@@ -49,6 +49,7 @@ class App extends Component {
     dlog("App. componentDidMount.");
 
     if (this.USE_SAMPLE_DATA) {
+      this.props.history.push("/mars/phobos");
       this.useSampleData();
     } else {
       if (window.singlePageConfig != null) {
@@ -80,6 +81,7 @@ class App extends Component {
     this.setState({ init: false });
 
     if (this.USE_SAMPLE_DATA) {
+
       this.useSampleData();
     } else {
       var fullURL =

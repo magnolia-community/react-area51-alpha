@@ -25,7 +25,8 @@ function withArea51(WrappedComponent, CTXService, EditorHintHelper, isPage) {
       var contextService = new CTXService(this.context);
       if (contextService.isEditionMode() && this.props != null) {
         let currentNode = ReactDOM.findDOMNode(this);
-
+        console.log("AEH:" + currentNode);
+        
         var editorHintHelper = new EditorHintHelper();
 
         editorHintHelper.addComponentHint(currentNode, this.props);

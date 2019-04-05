@@ -55,7 +55,7 @@ class Area extends React.Component {
    * @param {*} rootCmsPath 
    */
   getPathInPage(fullCMSPath, serverPath, rootCmsPath) {
-    var pathOfPage = getPathOfPage(window.location.pathname, serverPath, rootCmsPath);
+    var pathOfPage = this.getPathOfPage(window.location.pathname, serverPath, rootCmsPath);
 
     // Strip off the pathOfPage from the front.
     var pathInPage = fullCMSPath.substr(pathOfPage.length);
