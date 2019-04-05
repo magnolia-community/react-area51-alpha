@@ -15,3 +15,19 @@ describe('Testing removeFileExtension()', () => {
     });
 
 })
+
+describe('Testing removeTrailingSlash()', () => {
+
+    test('remove nothing if no slash', () => {
+        expect(removeTrailingSlash('hey')).toBe('hey');
+    });
+
+    test('remove slash at end', () => {
+        expect(removeTrailingSlash('hey/')).toBe('hey');
+    });
+
+    test('Dont remove other slashes', () => {
+        expect(removeTrailingSlash('hey/there')).toBe('hey/there');
+    });
+
+})

@@ -11,7 +11,16 @@ CommentHelper.prototype.addWrappingComments = function(
   before,
   after
 ) {
+  if (!currentNode){
+    return;
+  }
+  
   let parentNode = currentNode.parentNode;
+  if (typeof parentNode === "undefined") {
+    return;
+  }
+
+  console.log("addWrappingComments:" + parentNode);
 
   // Delete pageEditor comments if they were already created - so that they will be updated when state changes.
   let prev = currentNode.previousSibling;

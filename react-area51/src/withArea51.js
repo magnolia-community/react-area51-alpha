@@ -26,12 +26,28 @@ function withArea51(WrappedComponent, CTXService, EditorHintHelper, isPage) {
       if (contextService.isEditionMode() && this.props != null) {
         let currentNode = ReactDOM.findDOMNode(this);
         console.log("AEH:" + currentNode);
-        
+        //debugger;
+        console.log("AEH-OUT:" + this.simpleGetProps(currentNode));
+        if (!currentNode){
+          return;
+        }
         var editorHintHelper = new EditorHintHelper();
 
         editorHintHelper.addComponentHint(currentNode, this.props);
       }
     }
+
+    simpleGetProps = function(o){
+      var str='';
+  
+      for(var p in o){
+          if(typeof o[p] == 'string'){
+              str+= p + ': ' + o[p]+'; \n';
+          }
+      }
+  
+      return str;
+  }
 
     componentDidMount() {
       if (!isPage) {

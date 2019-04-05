@@ -8,7 +8,7 @@ import { dlog, removeFileExtension, removeTrailingSlash } from "./Helpers";
 
 /**
  * An Area component enables 'areas' of a React application to be managed in other systems.
- * It does three things.
+ * It does two things.
  * 1. It dynamically instantiates a list of React components based on the contents of a node within a Context item, getting both the type of React component to create and its contents (as props).
  * 2. It provides hints to a PageEditor tool in the form of extra attributes on elements or HTML comments to enable the content to be managed.
  *
@@ -35,8 +35,10 @@ class Area extends React.Component {
       // We just want the path to the area within the current page. (Content only stores ONE page, and ITS contents.)
       var pathInPage = this.getPathInPage(
         fullCMSPath,
+        window.location.pathname,
         this.context.serverPath,
-        this.context.rootCmsPath
+        this.context.rootCmsPath,
+        this.context.inPageEditor
       );
 
       if (cmsAreaName != null) {
@@ -54,8 +56,8 @@ class Area extends React.Component {
    * @param {*} serverPath 
    * @param {*} rootCmsPath 
    */
-  getPathInPage(fullCMSPath, serverPath, rootCmsPath) {
-    var pathOfPage = this.getPathOfPage(window.location.pathname, serverPath, rootCmsPath);
+  getPathInPage(fullCMSPath, urlPath, serverPath, rootCmsPath, inPageEditor) {
+    var pathOfPage = this.getPathOfPage(urlPath, serverPath, rootCmsPath, inPageEditor);
 
     // Strip off the pathOfPage from the front.
     var pathInPage = fullCMSPath.substr(pathOfPage.length);
@@ -75,14 +77,14 @@ class Area extends React.Component {
    * @param {*} serverPath 
    * @param {*} rootCmsPath 
    */
-  getPathOfPage(urlPath, serverPath, rootCmsPath){
+  getPathOfPage(urlPath, serverPath, rootCmsPath, inPageEditor){
     var pathOfPage = urlPath;
 
     pathOfPage = removeFileExtension(pathOfPage);
 
     pathOfPage = removeTrailingSlash(pathOfPage);
     
-    if (this.context.inPageEditor) {
+    if (inPageEditor) {
       //If there is a server path, strip it off from the front.
       pathOfPage = pathOfPage.substr(serverPath.length);
 

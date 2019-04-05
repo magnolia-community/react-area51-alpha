@@ -10,10 +10,12 @@ it("renders without crashing", () => {
   ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, div);
 });
 
-
-// it('App renders correctly with sampleData', () => {
-//   const tree = renderer
-//     .create(<BrowserRouter><App /></BrowserRouter>)
-//     .toJSON();
-//   expect(tree).toMatchSnapshot();
-// });
+/**
+ * Simple Snapshot tet for the entire app - based on the contents of the sampleData directory.
+ */
+it('App renders correctly with sampleData', () => {
+  const tree = renderer
+    .create(<BrowserRouter><App useSampleData={true} /></BrowserRouter>)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});

@@ -26,7 +26,11 @@ class App extends Component {
     dlog("***");
     dlog("App Constructor.");
 
-    this.USE_SAMPLE_DATA = true;
+    this.USE_SAMPLE_DATA = false;
+
+    if (this.props.useSampleData){
+      this.USE_SAMPLE_DATA = true;
+    }
 
     this.loadPageContent = this.loadPageContent.bind(this);
 

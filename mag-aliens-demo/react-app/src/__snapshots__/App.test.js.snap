@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders correctly with sampleData 1`] = `
+<div>
+  <div>
+    <div
+      className="content-background"
+    >
+      <div
+        className="container"
+      >
+        <h1
+          className="bd-title"
+        >
+          Phobos
+        </h1>
+        <div
+          className="component-name"
+        >
+          Page Standard
+        </div>
+        <div>
+          <div />
+        </div>
+        <div
+          className="row mgn-train-section"
+        >
+          <div
+            className="col-xs-12 col-md-6"
+          >
+            <div>
+              
+              <div
+                className="slideshow"
+              >
+                <h4>
+                  Best Aliens (Phobos)
+                </h4>
+                <div
+                  className="component-name"
+                >
+                  Slideshow
+                </div>
+                <div>
+                  
+                  <div
+                    className="card slide"
+                    style={
+                      Object {
+                        "width": "18rem",
+                      }
+                    }
+                  >
+                    <div
+                      className="card-body"
+                    >
+                      <h5
+                        className="card-title"
+                      >
+                        Porg
+                      </h5>
+                      <p
+                        className="card-text"
+                      >
+                        Much, much stupider then as portrayed in the Star Wars franchise.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className="card slide"
+                    style={
+                      Object {
+                        "width": "18rem",
+                      }
+                    }
+                  >
+                    <div
+                      className="card-body"
+                    >
+                      <h5
+                        className="card-title"
+                      >
+                        Phorly
+                      </h5>
+                      <p
+                        className="card-text"
+                      >
+                        These microbial beings have evolved spiral formed bodies to efficiently extract nutrients from rock.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-xs-12 col-md-6"
+          >
+            <div>
+              
+              <div>
+                <h5
+                  className="light"
+                >
+                  It's a moon of Mars.
+                </h5>
+                <div />
+                <div>
+                  <p
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="component-name"
+                >
+                  TextImage
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="row mgn-train-section"
+        >
+          <div
+            className="col-xs-12"
+          >
+            <div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div
+      className="container"
+    >
+      <div
+        className="meta clearfix row"
+      >
+        <div
+          className="col-md-12"
+        >
+          <ul
+            className="list-inline"
+          >
+            <li>
+              <a
+                href="#tickets"
+              >
+                Terms & conditions
+              </a>
+            </li>
+            <li>
+              <a
+                href="#tickets"
+              >
+                About us
+              </a>
+            </li>
+            <li>
+              <a
+                href="#tickets"
+              >
+                Contact us
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+`;

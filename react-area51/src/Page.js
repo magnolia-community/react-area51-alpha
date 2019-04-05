@@ -28,7 +28,6 @@ class Page extends React.Component {
    * Render Page
    */
   render() {
-    //console.log("Area render:" + this.props.cmsAreaName);
     const page = this.getPage();
 
     let pageElement = null;
@@ -41,16 +40,8 @@ class Page extends React.Component {
       );
     }
 
-    let DebugInfo = "";
-
-    const DEBUG_MODE = false;
-    if (DEBUG_MODE) {
-      DebugInfo = "PAGE.";
-    }
-
     return (
       <div>
-        {DebugInfo}
         {pageElement}
       </div>
     );
