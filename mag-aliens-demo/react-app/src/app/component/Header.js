@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import ENVIRONMENT from "../../environments/environment"
+import ENVIRONMENT from "../../environments/environment";
 
 class Header extends Component {
-	render() {
-	    let logo = ENVIRONMENT.staticFilePath + "/img/logo-magnolia.svg";
-	    
-		return (
+  render() {
+    let logo = ENVIRONMENT.staticFilePath + "/img/logo-magnolia.svg";
 
-	    	<nav className="navbar navbar-default mgn-train-header">
-				{/* <div className="container">
+    return (
+      <nav className="navbar navbar-default mgn-train-header">
+        {/* <div className="container">
 					<div className="navbar-header">
 						<button className="navbar-toggle collapsed" type="button" data-target="#menu-main-dropdown-mobile" data-toggle="collapse">
 							<span className="icon-bar"></span> 
@@ -30,10 +29,9 @@ class Header extends Component {
 				      </ul>
 				    </div>
 				</div>	 */}
-			</nav>
-			
-	    );
-	}
+      </nav>
+    );
+  }
 }
 
 export default Header;
