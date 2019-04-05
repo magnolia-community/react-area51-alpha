@@ -64,49 +64,72 @@ MagnoliaContextService.prototype.getAreaComponents = function(
     location.push(cmsAreaName);
     dlog("getAreaComponents: location:" + JSON.stringify(location, null, 2));
 
-    //Get ONLY the content of the current area by diving into the full content tree.
+    // Get ONLY the content of the current area by diving into the full content tree.
     var areaContent = getNestedObject(content, location);
     if (!areaContent) {
-      return
+      return;
     }
 
-    var components = areaContent["@nodes"];
+    // Get components from the content node.
+    var components = this.getComponentsFromNode(areaContent);
 
-    // eslint-disable-next-line
-    components.map(nodeName => {
+    //If in editing mode - add the TemplateDefinitions to the components.
+    var results = [];
+    components.map(component => {
 
-      //Handle the odd Magnolia endpoint - dereference the nodes based on the array.
-      var node = areaContent[nodeName];
-
-      if (
-        typeof node === "object" &&
-        node["jcr:primaryType"] === "mgnl:component"
-      ) {
-        dlog(
-          "Error - update to the newer delivery endpoint that outputs @nodeType instead of jcr:primaryType."
-        );
-      }
-
-      if (
-        typeof node === "object" &&
-        node["@nodeType"] === "mgnl:component"
-      ) {
         // Get the templateDefinition in order to get the dialog for the editor hints.
         if (this.isEditionMode()) {
           //Gets the template
-          var templateId = node["mgnl:template"];
+          var templateId = component["mgnl:template"];
           var template = this.getTemplate(templateId);
-          node.templateDefinition = template;
+          component.templateDefinition = template;
           //dlog("CTX: def:" + templateId)
           //dlog("CTX: temp:" + JSON.stringify(template,null,2))
         }
-
-        results.push(node);
+        results.push(component);
+        return null;
       }
-    });
+    );
   }
   return results;
 };
+
+/**
+ *  Handle the unique Magnolia delivery endpoint JSON.
+ *  
+ * - dereference the nodes based on the @nodes array.
+ * - only include nodes that have @nodeType "mgnl:component"
+ * */
+
+MagnoliaContextService.prototype.getComponentsFromNode = function(
+  areaContent
+) {
+  var nodeNames = areaContent["@nodes"];
+  var components = [];
+  nodeNames.map(function(nodeName) {
+    var node = areaContent[nodeName];
+
+    if (
+      typeof node === "object" &&
+      node["jcr:primaryType"] === "mgnl:component"
+    ) {
+      dlog(
+        "Error - update to the newer delivery endpoint that outputs @nodeType instead of jcr:primaryType."
+      );
+    }
+
+    if (
+      typeof node === "object" &&
+      node["@nodeType"] === "mgnl:component"
+    ) {
+      components.push(node);
+    }
+    return null;
+  }, this);
+
+  return components;
+}
+
 
 /**
  * Get a subObject from an object by means of an array of nodes to go into.
