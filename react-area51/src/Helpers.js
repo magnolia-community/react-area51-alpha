@@ -42,3 +42,18 @@ export function dlog(message) {
     console.log(message);
   }
 }
+
+export function removeFileExtension(path) {
+  if (path.lastIndexOf(".") > 0) {
+    path = path.substr(0, path.lastIndexOf("."));
+  }
+  return path;
+}
+
+export function removeTrailingSlash(path) {
+  if (path[path.length - 1] == "/") {
+    path = path.substr(0, path.length - 1);
+  }
+  return path;
+}
+
