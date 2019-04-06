@@ -1,0 +1,3 @@
+renderType: freemarker
+title: AtlasKit Title
+dialog: atlaskit:components/page-title

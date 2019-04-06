@@ -57,11 +57,13 @@ export default class App extends Component {
     return (
       <div>
         <Page
-          navigationWidth={this.context.navOpenState.width}
+          
           navigation={<StarterNavigation />}
         >
           {this.props.children}
         </Page>
+        {/*navigationWidth={this.context.navOpenState.width}*/}
+        
         <div>
           <FlagGroup onDismissed={this.onFlagDismissed}>
             {

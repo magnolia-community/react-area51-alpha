@@ -33,6 +33,7 @@ Default: Just get the content on this one page.
 		<noscript>You need to enable JavaScript to run this app.</noscript>
 
 		<div id="root"></div>
+		<div id="app-root"></div>
 		${resfn.js("/atlaskit/webresources/static/js/main.*js")}
 	
 	

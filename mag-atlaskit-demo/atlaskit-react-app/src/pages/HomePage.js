@@ -5,6 +5,9 @@ import MainSection from '../components/MainSection';
 import ContentWrapper from '../components/ContentWrapper';
 import PageTitle from '../components/PageTitle';
 
+import { Area } from "magnolia-react-area51";
+import ENVIRONMENT from "../environments/environment";
+
 export default class HomePage extends Component {
   static contextTypes = {
     showModal: PropTypes.func,
@@ -15,8 +18,16 @@ export default class HomePage extends Component {
   };
 
   render() {
+    console.log("HomePage. Render.")
     return (
       <ContentWrapper>
+
+        <Area
+          cmsAreaName="main"
+          parentPath={ ENVIRONMENT.rootCmsPath }
+          parentTemplateID="atlaskit:pages/standard"
+        />
+
         <PageTitle>Home</PageTitle>
         <MainSection />
         <ButtonGroup>

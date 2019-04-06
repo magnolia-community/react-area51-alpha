@@ -6,22 +6,9 @@ class: info.magnolia.module.jsmodels.rendering.JavascriptTemplateDefinition
 modelPath: /atlaskit/templates/common/definition-extractor-model.js
 
 areas:
-  left:
+  main:
     renderType: freemarker
     availableComponents:
       title:
-        id: atlaskit:components/title
-     
+        id: atlaskit:components/page-title
 
-
-  right:
-    renderType: freemarker
-    availableComponents:
-      title:
-        id: atlaskit:components/title
-  
-  schedule:
-    renderType: freemarker
-    availableComponents:
-      title:
-        id: atlaskit:components/title

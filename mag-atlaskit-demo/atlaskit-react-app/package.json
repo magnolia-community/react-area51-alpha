@@ -17,6 +17,7 @@
   "author": "Atlassian & Magnolia",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "magnolia-react-area51": "file:../../magnolia-react-area51",
     "@atlaskit/avatar": "^14.0.9",
     "@atlaskit/button": "^9.0.7",

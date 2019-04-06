@@ -45,10 +45,14 @@ export default class StarterNavigation extends React.Component {
     const backIcon = <ArrowleftIcon label="Back icon" size="medium" />;
     const globalPrimaryIcon = <AtlassianIcon label="Atlassian icon" size="xlarge" />;
 
+          /* 
+      isOpen={this.context.navOpenState.isOpen}
+        width={this.context.navOpenState.width}*/
     return (
+
       <Nav
-        isOpen={this.context.navOpenState.isOpen}
-        width={this.context.navOpenState.width}
+        isOpen={true}
+        width={100}
         onResize={this.props.onNavResize}
         containerHeaderComponent={() => (
           <AkContainerTitle
