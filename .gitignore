@@ -2,6 +2,9 @@
 apache-tomcat
 downloads
 
+# Build
+build
+
 # Logs
 logs
 *.log

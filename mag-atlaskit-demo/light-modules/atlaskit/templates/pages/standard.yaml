@@ -1,0 +1,27 @@
+templateScript: /atlaskit/templates/pages/standard.ftl
+renderType: freemarker
+visible: true
+title: Atlaskit Standard Page
+class: info.magnolia.module.jsmodels.rendering.JavascriptTemplateDefinition
+modelPath: /atlaskit/templates/common/definition-extractor-model.js
+
+areas:
+  left:
+    renderType: freemarker
+    availableComponents:
+      title:
+        id: atlaskit:components/title
+     
+
+
+  right:
+    renderType: freemarker
+    availableComponents:
+      title:
+        id: atlaskit:components/title
+  
+  schedule:
+    renderType: freemarker
+    availableComponents:
+      title:
+        id: atlaskit:components/title
