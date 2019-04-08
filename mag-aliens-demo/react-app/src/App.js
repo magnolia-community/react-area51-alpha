@@ -28,7 +28,7 @@ class App extends Component {
 
     this.USE_SAMPLE_DATA = false;
 
-    if (this.props.useSampleData){
+    if (this.props.useSampleData) {
       this.USE_SAMPLE_DATA = true;
     }
 
@@ -85,7 +85,6 @@ class App extends Component {
     this.setState({ init: false });
 
     if (this.USE_SAMPLE_DATA) {
-
       this.useSampleData();
     } else {
       var fullURL =
@@ -179,7 +178,11 @@ class App extends Component {
         </div>
       );
     } else {
-      return null;
+      return (
+        <div>
+          <p>Loading content from CMS...</p>
+        </div>
+      );
     }
   }
 }
