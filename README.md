@@ -90,6 +90,7 @@ With this setup, whenever you change any file in any of the projects, the full d
   * `npm start`
   * Opens running app in a browser.
   * Depends on the `MagnoliaReactArea51.js` library.
+  * Based on Create-React-App 2.*
   
 Now try changing any content in the Magnolia Pages app, then refresh this app and notice that it reflects your content changes! :fire:
 
@@ -100,6 +101,10 @@ Now try changing any content in the Magnolia Pages app, then refresh this app an
 Any code changes you make to react-app (and the libraries) must be deployed to the Magnolia instance, in order to be available in the Pages app. Deploy the app to Magnolia by running:
 `npm run build`
 
+**Test:**
+Run the Jest-based automatic tests for the magnolia-react-area51 package by running `npm run test`.
+
+Run the Jest-based snapshot test for the mag-aliens-demo project by running `npm test`.
 
 # How to Use Area51 in your React project (When we're out of Alpha! :telescope:)
 
@@ -119,6 +124,13 @@ Find the Area51 library for your CMS or editor. (If one does not exist you will 
 * Configure the environment variables to point to your CMS instance. [Example](mag-aliens-demo/react-app/src/environments/environment.js)
 * Modify the package.json `clean` and `copy` npm scripts to deploy to your CMS location.
 
+**Tips**
+* Ensure that the CMS (aka Magnolia) page template that hosts the React app has a DIV with the proper id (Usually "app" or "app-root".) (It has to match whatever is in your react app `public/index.html` file.
+* You may need to adjust the Router in your React app to accept '.html' since this will be appended to the URL when running in the CMS (Magnolia).
+
+**Working on Page Editor Hints in Dev mode**
+In order to see the the page editor hints generated while in CRA development mode, you need to use some test local data JSON files, instead of connecting to the CMS endpoints. You can do this in the demo project at `mag-aliens-demo/react-app/App.js` by setting `USE_SAMPLE_DATA` to `true`.
+
 # Known Issues :grimacing:
 
 * When a new page, or a new component is created which contains areas, Magnolia will not create the necessary area nodes in the 'JCR' backend. Therefore when playing with the demo, you can copy an existing page, or you can go into the 'JCR Browser' app and copy area nodes from one page to a new page.
@@ -127,8 +139,8 @@ Find the Area51 library for your CMS or editor. (If one does not exist you will 
 
 ## Things to improve
 Not bugs, but lets improve these:
-* Use real environment variables.
-* Add tests.
+* Use more real environment variables.
+* Add more tests.
 * Make the Content JSON parsing 'pluggable'.
 * Get rid of flickering when changing Routes.
 * Move the mapping.js to an external file.
@@ -143,6 +155,10 @@ The `Area` components instantiate React components using React.createComponent()
 
 ![Area51 Architectural Diagram](mag-aliens-demo/_dev/README-react-area51.png)
 
+## Technical Notes
+In order to make it easier to include the React build in a Magnolia page (In order to use the Page Editor) the demo project overrides default create-react-app v2 behaviour, and does not code-split. This is achieved (without 'eject' from create-react-app via a custom build script in `mag-aliens-demo/react-app/scripts/build-non-split.js`.
+
+An environment variable `REACT_APP_LOG_LEVEL` can be set to 0 or 1 to control if messages are logged to the console.
 
 ### Contributors
 
