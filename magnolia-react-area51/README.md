@@ -3,7 +3,7 @@ Area51 allows mysterious alien content to take control of your React app. :alien
 
 **This is software in development. Alpha. Subject to frequent change. :warning:**
 
-[Read this Area51 Introduction](/react-area51-alpha)
+[Read the Area51 Introduction](README.md)
 
 # This is react-area51 for Magnolia CMS
 
@@ -14,7 +14,7 @@ Screenshot of React Aliens Demo Project being edited in a Magnolia.
 
 # How to Use
 
-[Read the how to use here.](/react-area51-alpha/react-area51)
+[Read 'How to Use Area51 in your React project'](/react-area51)
 
 # License
 
