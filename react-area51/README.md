@@ -33,12 +33,13 @@ Find the Area51 library for your CMS or editor.
 (If one does not exist you will need to create one. See the following section.)
 
 **Setup**
-* Install the Area51 npm package for your CMS. For example `magnolia-react-area51`. It provides `Area` React component.
+* Install the Area51 npm package for your CMS. For example `magnolia-react-area51`. It provides `Area` (and `Page`) React components.
 * Place `Area` components in your existing React app wherever you want externally managed components. [Example](/mag-aliens-demo/react-app/src/app/component/SlideShow.js)
 * Configure these props on your Area components:
   * cmsAreaName: The name of the corresponding area in your CMS.
   * parentPath: The full path to the CMS content node that will hold the areas contents. (Typically dynamically generated.)
   * parentTemplateId: The ID of the template of the node hosting this area in your CMS.
+* If you want to support a heirarchy of pages, place a `Page` component in your app. [Example](/mag-aliens-demo/react-app/src/App.js)
 * Create a mapping configuration file so Area51 can map the template ID's from your CMS, with the React components to be instantiated. [Example](/mag-aliens-demo/react-app/src/app/mapping.js)
 * Configure the environment variables to point to your CMS instance. [Example](/mag-aliens-demo/react-app/src/environments/environment.js)
 * Modify the package.json `clean` and `copy` npm scripts to deploy to your CMS location.
