@@ -110,23 +110,7 @@ Run the Jest-based snapshot test for the mag-aliens-demo project by running `npm
 
 **Note: this is how it will work once we leave Alpha. For now both libraries and the demo are in this one project to facilitate experimentation and development.**
 
-Find the Area51 library for your CMS or editor. (If one does not exist you will need to create one.)
-
-**Setup**
-* Start with your own existing React project. (Or just copy the `mag-aliens-demo/react-app` directory.)
-* Install the Area51 npm package. (It provides `Area` and `Page` components.) (Not existing yet, just use a 'file' reference in the package.json)
-* Place `Area` (or `Page`) components in your existing React app wherever you want externally managed components. [Example](mag-aliens-demo/react-app/src/app/component/SlideShow.js)
-* Configure these props on your Area components:
-  * cmsAreaName: The name of the corresponding area in your CMS.
-  * parentPath: The full path to the CMS content node that will hold the areas contents. (Typically dynamically generated.)
-  * parentTemplateId: The name/ID of the template of the node hosting this area in your CMS.
-* Create a mapping configuration file so Area51 can map the template ID's in your CMS with the React components to be instantiated. You can use **any** React component. [Example](mag-aliens-demo/react-app/src/app/mapping.js)
-* Configure the environment variables to point to your CMS instance. [Example](mag-aliens-demo/react-app/src/environments/environment.js)
-* Modify the package.json `clean` and `copy` npm scripts to deploy to your CMS location.
-
-**Tips**
-* Ensure that the CMS (aka Magnolia) page template that hosts the React app has a DIV with the proper id (Usually "app" or "app-root".) (It has to match whatever is in your react app `public/index.html` file.
-* You may need to adjust the Router in your React app to accept '.html' since this will be appended to the URL when running in the CMS (Magnolia).
+[Read 'How to Use Area51 in your React project'](/react-area51)
 
 **Working on Page Editor Hints in Dev mode**
 In order to see the the page editor hints generated while in CRA development mode, you need to use some test local data JSON files, instead of connecting to the CMS endpoints. You can do this in the demo project at `mag-aliens-demo/react-app/App.js` by setting `USE_SAMPLE_DATA` to `true`.
@@ -147,18 +131,10 @@ Not bugs, but lets improve these:
 
 # Technical Details :triangular_ruler:
 
-The React application loads the JSON with the content and stores this in a React Context `Area51Context`.
+[Read 'Technical Details'](/react-area51)
 
-The `Area` components instantiate React components using React.createComponent(), and wrap each component with an HOC `withArea51` which grabs the appropriate content from the `Area51Context` and passes it directly as `props` to the component.
-
-`withArea51` also provides the 'EditorHints' which are included in the DOM to allow the components to be managed in the CMS. 
-
-![Area51 Architectural Diagram](mag-aliens-demo/_dev/README-react-area51.png)
-
-## Technical Notes
+## Technical Notes for Magnolia
 In order to make it easier to include the React build in a Magnolia page (In order to use the Page Editor) the demo project overrides default create-react-app v2 behaviour, and does not code-split. This is achieved (without 'eject' from create-react-app via a custom build script in `mag-aliens-demo/react-app/scripts/build-non-split.js`.
-
-An environment variable `REACT_APP_LOG_LEVEL` can be set to 0 or 1 to control if messages are logged to the console.
 
 ### Contributors
 
