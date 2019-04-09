@@ -1,7 +1,7 @@
 {
   "name": "react-area51",
-  "version": "0.0.6",
-  "description": "Enable people to manage your React app in an easy-to-use CMS.",
+  "version": "0.1.0",
+  "description": "Area51 allows mysterious alien content (from a CMS) to take control of your React app.",
   "main": "./lib/ReactArea51.js",
   "scripts": {
     "build": "webpack",
