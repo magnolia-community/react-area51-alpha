@@ -1,6 +1,6 @@
 {
   "name": "magnolia-react-area51",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Area51 allows mysterious alien content (from Magnolia, a CMS) to take control of your React app.",
   "main": "./lib/MagnoliaReactArea51.js",
   "scripts": {
