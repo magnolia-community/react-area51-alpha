@@ -36,11 +36,11 @@ MagnoliaContextService.prototype.getAreaDefinitionFromTemplate = function(
 };
 
 /**
- * Returns the current Magnolia JCR node path.
+ * Returns the CMS node path (JCR node) for the current page.
  */
-MagnoliaContextService.prototype.getCurrentNode = function() {
-  return this.context.content["@path"];
-};
+// MagnoliaContextService.prototype.getCurrentNode = function() {
+//   return this.context.content["@path"];
+// };
 
 /**
  * Return the components (actual content) of an area.

@@ -47,6 +47,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/magnolia-community/react-area51-alpha/"
+    "url": "git://github.com/magnolia-community/react-area51-alpha/magnolia-react-area51"
   }
 }
