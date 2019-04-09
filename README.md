@@ -8,9 +8,10 @@ It does not include an editing tool itself, but provides the infrastructure an e
 
 Capabilities
 
-* Use any React component without modification. They get all CMS content passed in as props.
-* Supports nested components.
-* Supports multiple pages.
+* Use any React component without modification. They recieve all CMS-managed content passed in as `props`.
+* Handles injecting 'EditorHints' into the DOM to support the editing UI of the CMS.
+* Supports managing nested components.
+* Supports managing a tree of 'pages'.
 
 Screenshot of React Demo Project being edited in a CMS.
 ![Area51 Demo Project in Magnolia](mag-aliens-demo/_dev/README-demo-project.jpg)
