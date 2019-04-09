@@ -1,4 +1,4 @@
-# Area51
+# React-Area51
 Area51 allows mysterious alien content to take control of your React app. :alien:
 
 *With it, content authors can edit your React app in visual WYSIWYG editing UI, such as a page editor.*
