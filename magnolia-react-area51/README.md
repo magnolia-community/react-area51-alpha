@@ -1,7 +1,7 @@
 # Area51
 Area51 allows mysterious alien content to take control of your React app. :alien:
 
-**This is software in development. Alpha. Subject to frequent change. :warning:**
+**This is Alpha software. Subject to frequent change. Not yet officially supported by Magnolia.:warning:**
 
 [Read the Area51 Introduction](README.md)
 

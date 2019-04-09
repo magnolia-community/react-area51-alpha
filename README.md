@@ -1,7 +1,7 @@
 # Area51
 Area51 allows mysterious alien content to take control of your React app. :alien:
 
-**This is software in development. Alpha. Subject to frequent change. :warning:**
+**This is Alpha software. Subject to frequent change. Not yet officially supported by Magnolia.:warning:**
 
 Area51 enables content authors to manage the actual structure and layout of a React app, not just the content items. It was created to re-empower non-developers to create and edit React-based websites and other digital experiences. Area51 connects the modern component-architecture of React, with the component concept of CMS page editors.
 It does not include an editing tool itself, but provides the infrastructure an editing UI can plug into.
