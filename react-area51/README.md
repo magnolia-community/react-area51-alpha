@@ -13,7 +13,7 @@ Capabilities
 * Supports managing nested components.
 * Supports managing a tree of 'pages'.
 
-Note: This package is 'CMS agnostic', you can use it to hook up your own editing UI or CMS. Alternatively, use one of the CMS-specific packages based on it that implement their editing UI and content structures.
+Note: This package is 'CMS agnostic', you can use it to hook up your own editing UI and content structures. Alternatively, use one of the CMS-specific packages based on it.
 
 Screenshot of React Aliens Demo Project being edited in a CMS.
 ![Area51 Demo Project in Magnolia](/mag-aliens-demo/_dev/README-demo-project.jpg)
@@ -49,29 +49,28 @@ Find the Area51 library for your CMS or editor.
 
 # Creating an Area51 for your CMS or editing UI
 
-* Install the basic `react-area51` npm package. 
+* Install the `react-area51` npm package. 
 * Implement two classes specificaly for your CMS or editing UI:'ContextService' and 'EditorHintHelper'.
-* Export an `index.js` file that wraps the basic `Area` component with an HOC which provides your custom ContextService and EditorHintHelper. [Reference implementation](/magnolia-react-area51/src/index.js)
+* Export an `index.js` file ([Reference implementation](/magnolia-react-area51/src/index.js) ) that wraps the basic `Area` component with an HOC which provides your custom ContextService and EditorHintHelper. 
 * Enjoy!
 
 **ContextService**
-A service that gives Area51 all it needs to operate on the CMS content that is stored in the Area51Context state.
+A service that gives Area51 all it needs to operate on the CMS content that is stored in the Area51Context state. [Reference implementation](/magnolia-react-area51/src/MagnoliaContextService.js)
 * getAreaDefinitionFromTemplate - Return the area definition from a specific template.
 * getAreaComponents - Return the components (actual content) of an area.
 * getPage - Return the actual content of a page.
 * getTemplate - Return the template definition.
 * inEditionMode - Return whether the page is in edition mode.
 
-[Reference implementation](/magnolia-react-area51/src/MagnoliaContextService.js)
+
 
 **EditorHintHelper**
 Generate the markup required for the Page Editing UI.
-A CMS will usually include specific markup in the DOM so that it's Page Editor knows where to inject editing UI elements, and how they should be configured.
+A CMS will usually include specific markup in the DOM so that it's Page Editor knows where to inject editing UI elements, and how they should be configured. [Reference implementation](/magnolia-react-area51/src/MagnoliaEditorHintHelper.js)
 
 * addComponentHint - Add editor hints to the DOM for a component.
 * addAreaHint - Add editor hints to the DOM for an area.
 
-[Reference implementation](/magnolia-react-area51/src/MagnoliaEditorHintHelper.js)
 
 # Technical Details :triangular_ruler:
 
