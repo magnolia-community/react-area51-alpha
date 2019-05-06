@@ -11,4 +11,8 @@ areas:
     availableComponents:
       title:
         id: atlaskit:components/page-title
+      button:
+        id: atlaskit:components/button
+      date-picker:
+        id: atlaskit:components/date-picker
 

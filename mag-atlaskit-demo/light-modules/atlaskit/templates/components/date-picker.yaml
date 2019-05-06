@@ -1,0 +1,3 @@
+title: Date Picker
+renderType: freemarker
+dialog: atlaskit:components/date-picker

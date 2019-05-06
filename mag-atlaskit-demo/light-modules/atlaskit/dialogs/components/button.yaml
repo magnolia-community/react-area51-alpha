@@ -1,0 +1,47 @@
+# Automatically generated dialog with few most often used fileds (text, right, link, DAM image, multivalue, link to app, select). Feel free to modify them for your specific component.
+
+form:
+  label: button
+  tabs:
+    - name: tabMain
+      label: Main
+      fields:
+
+        - name: children
+          fieldType: text
+          label: Title
+
+        - name: href
+          fieldType: link
+          targetWorkspace: website
+          appName: pages
+          label: Select page
+          identifierToPathConverter:
+            class: info.magnolia.ui.form.field.converter.BaseIdentifierToPathConverter
+
+        - name: appearance
+          fieldType: select
+          label: Appearance
+          options:
+            - label: Default
+              value: default
+            - label: Danger
+              value: danger
+            - label: Link
+              value: link
+            - label: Subtle
+              value: subtle
+            - label: Warning
+              value: warning
+
+
+        - name: isDisabled
+          fieldType: checkbox
+          label: Is Disabled?
+          buttonLabel: Disabled
+
+actions:
+  commit:
+    class: info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition
+  cancel:
+    class: info.magnolia.ui.admincentral.dialog.action.CancelDialogActionDefinition

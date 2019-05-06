@@ -1,0 +1,25 @@
+# Automatically generated dialog with few most often used fileds (text, right, link, DAM image, multivalue, link to app, select). Feel free to modify them for your specific component.
+
+form:
+  label: button
+  tabs:
+    - name: tabMain
+      label: Main
+      fields:
+
+        - name: name
+          fieldType: text
+          label: Name
+
+
+        - name: defaultIsOpen
+          fieldType: checkbox
+          type: Boolean
+          label: Is Open?
+          buttonLabel: Open
+
+actions:
+  commit:
+    class: info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition
+  cancel:
+    class: info.magnolia.ui.admincentral.dialog.action.CancelDialogActionDefinition

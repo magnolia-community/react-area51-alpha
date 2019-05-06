@@ -22,6 +22,7 @@
     "@atlaskit/avatar": "^14.0.9",
     "@atlaskit/button": "^9.0.7",
     "@atlaskit/css-reset": "^3.0.1",
+    "@atlaskit/datetime-picker": "^7.0.5",
     "@atlaskit/dropdown-menu": "^6.1.10",
     "@atlaskit/flag": "^9.0.7",
     "@atlaskit/icon": "^13.4.0",
@@ -38,12 +39,18 @@
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
-    "react-scripts": "^1.1.1",
+    "react-scripts": "^2.1.8",
     "surge": "^0.20.1",
     "rewire": "^4.0.1"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/magnolia-community/react-area51-alpha/"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
