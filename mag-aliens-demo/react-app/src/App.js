@@ -62,9 +62,6 @@ class App extends Component {
         this.setState({
           init: true,
           inPageEditor: inPageEditor(),
-          rootCmsPath: ENVIRONMENT.rootCmsPath,
-          serverPath: ENVIRONMENT.serverPath,
-          componentMap: COMPONENTS,
           content: window.singlePageConfig.content,
           templateDefinitions: window.singlePageConfig.templateDefinitions
         });
@@ -78,44 +75,43 @@ class App extends Component {
 
   loadPageContent(relativePath) {
     dlog("loadPageContent:" + relativePath);
-    if (relativePath.lastIndexOf(".") > 0) {
-      relativePath = relativePath.substr(0, relativePath.lastIndexOf("."));
+    if (this.USE_SAMPLE_DATA) {
+      return;
     }
+
+    relativePath = this.removeExtension(relativePath);
+
+    // if (relativePath.lastIndexOf(".") > 0) {
+    //   relativePath = relativePath.substr(0, relativePath.lastIndexOf("."));
+    // }
 
     this.setState({ init: false });
 
-    if (this.USE_SAMPLE_DATA) {
-      this.useSampleData();
-    } else {
-      var fullURL =
-        ENVIRONMENT.restUrlBase + ENVIRONMENT.rootCmsPath + relativePath;
-      dlog("Request content from: " + fullURL);
+    var fullURL =
+      ENVIRONMENT.restUrlBase + ENVIRONMENT.rootCmsPath + relativePath;
+    dlog("Request content from: " + fullURL);
 
-      //Loads the single page config
-      axios
-        .get(fullURL)
-        .then(response => {
-          dlog("***");
-          dlog("Content: got magnolia page content.");
+    //Loads the single page config
+    axios
+      .get(fullURL)
+      .then(response => {
+        dlog("***");
+        dlog("Content: got magnolia page content.");
 
-          this.setState({
-            init: true,
-            inPageEditor: inPageEditor(),
-            serverPath: ENVIRONMENT.serverPath,
-            rootCmsPath: ENVIRONMENT.rootCmsPath,
-            componentMap: COMPONENTS,
-            content: response.data,
+        this.setState({
+          init: true,
+          inPageEditor: inPageEditor(),
+          content: response.data,
 
-            /* TODO If we every want edit (or debug, or test)
-						outside the context of a magnolia page template - 
-					then we Also need an endpoint to get the template definitions. */
-            templateDefinitions: null
-          });
-        })
-        .catch(error => {
-          dlog(error);
+          /* TODO If we every want edit (or debug, or test)
+          outside the context of a magnolia page template - 
+        then we Also need an endpoint to get the template definitions. */
+          templateDefinitions: null
         });
-    }
+      })
+      .catch(error => {
+        dlog(error);
+      });
   }
 
   useSampleData() {
@@ -125,12 +121,25 @@ class App extends Component {
     this.setState({
       init: true,
       inPageEditor: inPageEditor(),
-      rootCmsPath: ENVIRONMENT.rootCmsPath,
-      serverPath: ENVIRONMENT.serverPath,
-      componentMap: COMPONENTS,
       content: PAGE_MODEL,
       templateDefinitions: TEMPLATE_DEFINITIONS
     });
+  }
+
+  getEditorPath(relativePath) {
+    // remove serverPath
+    relativePath = relativePath.substr(ENVIRONMENT.serverPath.length);
+
+    // remove rootCmsPath
+    relativePath = relativePath.substr(ENVIRONMENT.rootCmsPath.length);
+    return relativePath;
+  }
+
+  removeExtension(path) {
+    if (path.indexOf(".") > -1) {
+      path = path.substr(0, path.lastIndexOf("."));
+    }
+    return path;
   }
 
   componentWillMount() {
@@ -139,16 +148,10 @@ class App extends Component {
       var relativePath = location.pathname;
 
       if (this.state.inPageEditor) {
-        // remove serverPath
-        relativePath = relativePath.substr(ENVIRONMENT.serverPath.length);
-
-        // remove rootCmsPath
-        relativePath = relativePath.substr(ENVIRONMENT.rootCmsPath.length);
+        relativePath = this.getEditorPath(relativePath);
       }
 
-      if (relativePath.indexOf(".") > -1) {
-        relativePath = relativePath.substr(0, relativePath.lastIndexOf("."));
-      }
+      relativePath = this.removeExtension(relativePath);
 
       dlog("***");
       dlog("Route Change. RelativePath: " + relativePath);
@@ -167,9 +170,8 @@ class App extends Component {
 
       return (
         <div>
+          <Navigation />
           <Area51Context.Provider value={this.state}>
-            <Navigation />
-
             <Page />
             {/*<PageHome/>*/}
 
@@ -180,6 +182,7 @@ class App extends Component {
     } else {
       return (
         <div>
+          <Navigation />
           <p>Loading content from CMS...</p>
         </div>
       );
