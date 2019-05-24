@@ -68,3 +68,5 @@ typings/
 .next
 
 .DS_Store
+mag-aliens-demo/light-modules/react-aliens/webresources/static/js
+mag-aliens-demo/light-modules/react-aliens/webresources/static/css

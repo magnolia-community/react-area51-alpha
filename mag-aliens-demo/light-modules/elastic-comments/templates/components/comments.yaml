@@ -1,0 +1,4 @@
+renderType: freemarker
+title: Alient Comments
+dialog: elastic-comments:components/comments
+templateScript: /elastic-comments/templates/components/comments.ftl

@@ -37,6 +37,15 @@ class PageStandard extends Component {
       }
     ];
 
+    var row3 = [
+      {
+        className: "row",
+        parentPath: parentPath,
+        cmsAreaName: "comments",
+        parentTemplateID: parentTemplateID
+      }
+    ];
+
     dlog("render PageStandard.");
 
     return (
@@ -52,6 +61,7 @@ class PageStandard extends Component {
 
           <Row columns={row1} />
           <Row columns={row2} />
+          <Row columns={row3} />
         </div>
       </div>
     );

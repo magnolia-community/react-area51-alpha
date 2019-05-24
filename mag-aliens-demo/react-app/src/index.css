@@ -1,51 +1,105 @@
 body {
-	padding: 0px;
-	margin-top: 0px!important;
-	background-color: #fff;
-}
- 
-.content-background{
-	background-color: #f9f9f9;
-	margin-top: -10px;
-	padding-bottom: 40px;
+  padding: 0px;
+  margin-top: 0px !important;
+  background-color: #fff;
 }
 
-h1,h2,h3,h4{
-	margin-top: 10px;
+.content-background {
+  background-color: #f9f9f9;
+  margin-top: -10px;
+  padding-bottom: 40px;
 }
 
-.navbar{
-	align-items: flex-start;
-}
-footer{
-	width: 100%;
-	padding-top: 10px;
-	margin-top: 40px;
-}
-footer li{
-	display: inline-block;
-	margin-right: 10px;
-	
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 10px;
 }
 
-.card{
-	margin-bottom: 10px;
+.navbar {
+  align-items: flex-start;
+}
+
+footer {
+  width: 100%;
+  padding-top: 10px;
+  margin-top: 40px;
+}
+
+footer li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.card {
+  margin-bottom: 10px;
 }
 
 .bd-title {
-	margin-top: 1rem;
-	margin-bottom: .5rem;
-	font-weight: 300;
-	font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  font-size: 3rem;
 }
 
-.component-name{
-	margin-top:-10px;
-	font-size: 0.6em;
+.component-name {
+  margin-top: -10px;
+  font-size: 0.6em;
 }
+
 .component-name:before {
-    content: "[";
+  content: "[";
 }
+
 .component-name:after {
-    content: "]";
+  content: "]";
+}
+
+/** Added For Elastic Comments */
+
+.Comment-Component {
+  padding-top: 1rem;
+  margin: 2rem auto;
+}
+
+.App-logo {
+  height: 80px;
+}
+
+.Spin {
+  animation: App-logo-spin infinite 2s linear;
+}
+
+.App-header {
+  text-align: center;
+  background-color: var(--secondary);
+  padding: 20px;
+  color: white;
+  border-radius: 0.3rem;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.comment-row {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
 }
