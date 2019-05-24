@@ -1,0 +1,20 @@
+form:
+  tabs:
+    - name: tabMain
+      fields:
+        - name: server
+          label: "Elastic Server Address"
+          fieldType: text
+          required: true
+        - name: index
+          label: "Index Name"
+          fieldType: text
+          required: true
+        - name: showInEdit
+          label: "Show Comments in Edit Mode"
+          fieldType: checkbox
+actions:
+  commit:
+    class: info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition
+  cancel:
+    class: info.magnolia.ui.admincentral.dialog.action.CancelDialogActionDefinition
