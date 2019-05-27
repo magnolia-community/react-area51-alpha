@@ -14,8 +14,7 @@ areas:
       text-image:
         id: magnolia-aliens:components/text-image
       slideshow:
-        id: magnolia-aliens:components/slideshow      
-
+        id: magnolia-aliens:components/slideshow
 
   right:
     renderType: freemarker
@@ -26,7 +25,13 @@ areas:
         id: magnolia-aliens:components/text-image
       slideshow:
         id: magnolia-aliens:components/slideshow
-  
+
+  comments:
+    renderType: freemarker
+    availableComponents:
+      title:
+        id: elastic-comments:components/comments
+
   schedule:
     renderType: freemarker
     availableComponents:

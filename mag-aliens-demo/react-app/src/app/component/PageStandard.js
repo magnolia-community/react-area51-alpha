@@ -39,7 +39,7 @@ class PageStandard extends Component {
 
     var row3 = [
       {
-        className: "row",
+        className: "col-xl-12",
         parentPath: parentPath,
         cmsAreaName: "comments",
         parentTemplateID: parentTemplateID

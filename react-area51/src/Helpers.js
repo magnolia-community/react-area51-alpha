@@ -12,7 +12,7 @@ export function instantiateReactComponent(
   isPage
 ) {
   const templateId = component["mgnl:template"];
-  console.log("PAGE instantiateComponent:" + templateId);
+  // console.log("PAGE instantiateComponent:" + templateId);
 
   var componentClass;
   if (templateId) {

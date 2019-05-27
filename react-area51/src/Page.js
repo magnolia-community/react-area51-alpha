@@ -4,7 +4,6 @@ import Area51Context from "./Area51Context";
 import { instantiateReactComponent } from "./Helpers";
 
 import { dlog } from "./Helpers";
-import CommentComponent from "./comments/CommentComponent";
 
 class Page extends React.Component {
   // Use React Context API.
@@ -32,8 +31,6 @@ class Page extends React.Component {
 
     let pageElement = null;
     if (page) {
-      console.log("Page ID:");
-      console.log(page["@id"]);
       pageElement = instantiateReactComponent(
         page,
         this.props,
@@ -42,12 +39,7 @@ class Page extends React.Component {
       );
     }
 
-    return (
-      <div>
-        {pageElement}
-        <CommentComponent />
-      </div>
-    );
+    return <div>{pageElement}</div>;
   }
 }
 

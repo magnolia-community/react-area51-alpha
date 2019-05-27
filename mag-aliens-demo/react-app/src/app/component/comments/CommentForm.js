@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 export default class CommentForm extends React.Component {
   constructor(props) {
@@ -9,13 +9,20 @@ export default class CommentForm extends React.Component {
 
       comment: {
         name: "",
-        message: ""
+        message: "",
+        page: ""
       }
     };
 
     // bind context to methods
     this.handleFieldChange = this.handleFieldChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.addComment = this.addComment.bind(this);
+  }
+
+  addComment(comment) {
+    this.props.parent.addComment(comment);
+    //this.props.addComment(comment);
   }
 
   /**
@@ -32,6 +39,16 @@ export default class CommentForm extends React.Component {
       }
     });
   };
+
+  postUrl() {
+    return "http://".concat(
+      this.props.server,
+      "/",
+      this.props.index,
+      "/",
+      "comment"
+    );
+  }
 
   /**
    * Form submit handler
@@ -50,8 +67,11 @@ export default class CommentForm extends React.Component {
     // persist the comments on server
     // TODO This is Elastic...
     let { comment } = this.state;
-    fetch("http://localhost:7777", {
+    comment.page = this.props.pageId;
+
+    fetch(this.postUrl(), {
       method: "post",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(comment)
     })
       .then(res => res.json())
@@ -59,9 +79,8 @@ export default class CommentForm extends React.Component {
         if (res.error) {
           this.setState({ loading: false, error: res.error });
         } else {
-          // add time return from api and push comment to parent state
           comment.time = res.time;
-          this.props.addComment(comment);
+          this.addComment(comment);
 
           // clear the message box
           this.setState({
@@ -71,6 +90,7 @@ export default class CommentForm extends React.Component {
         }
       })
       .catch(err => {
+        console.log(err);
         this.setState({
           error: "Something went wrong while submitting form.",
           loading: false
