@@ -74,7 +74,6 @@ class App extends Component {
         this.loadPageContent(h);
       }
     }
-    console.log(this.props);
   }
 
   loadPageContent(relativePath) {
