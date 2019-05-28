@@ -70,32 +70,40 @@ export default class CommentForm extends React.Component {
     comment.page = this.props.pageId;
     comment.time = Date.now();
 
-    fetch(this.postUrl(), {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(comment)
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.error) {
-          this.setState({ loading: false, error: res.error });
-        } else {
-          this.addComment(comment);
-
-          // clear the message box
-          this.setState({
-            loading: false,
-            comment: { ...comment, message: "" }
-          });
-        }
+    // TODO This is a quick hack to get around the comments showing up.
+    // Should add a component to determine something like isEditMode()...
+    if (
+      !window.location.href.startsWith("http://localhost:8080/magnoliaAuthor/")
+    ) {
+      fetch(this.postUrl(), {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(comment)
       })
-      .catch(err => {
-        console.log(err);
-        this.setState({
-          error: "Something went wrong while submitting form.",
-          loading: false
+        .then(res => res.json())
+        .then(res => {
+          if (res.error) {
+            this.setState({ loading: false, error: res.error });
+          } else {
+            this.addComment(comment);
+
+            // clear the message box
+            this.setState({
+              loading: false,
+              comment: { ...comment, message: "" }
+            });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          this.setState({
+            error: "Something went wrong while submitting form.",
+            loading: false
+          });
         });
-      });
+    } else {
+      this.addComment(comment);
+    }
   }
 
   isFormValid() {

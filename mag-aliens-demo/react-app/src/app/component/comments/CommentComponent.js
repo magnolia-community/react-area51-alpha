@@ -30,7 +30,13 @@ class CommentComponent extends React.Component {
   }
 
   componentDidMount() {
-    this.performSearch();
+    // TODO This is a quick hack to get around the comments showing up.
+    // Should add a component to determine something like isEditMode()...
+    if (
+      !window.location.href.startsWith("http://localhost:8080/magnoliaAuthor/")
+    ) {
+      this.performSearch();
+    }
   }
 
   extractSource(hits) {
@@ -39,6 +45,13 @@ class CommentComponent extends React.Component {
 
   performSearch() {
     const query = {
+      sort: [
+        {
+          time: {
+            order: "desc"
+          }
+        }
+      ],
       query: {
         match: {
           page: this.props["@id"]

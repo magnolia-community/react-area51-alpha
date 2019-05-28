@@ -29,7 +29,6 @@ function timeSince(timeStamp) {
 export default function Comment(props) {
   const { name, message, time } = props.comment;
   const relTime = timeSince(new Date(time));
-  console.log("result: " + relTime);
 
   return (
     <div className="media mb-3">
