@@ -18,6 +18,7 @@
       "sourceMaps": true,
       "webRoot": "${workspaceRoot}/react-app/src",
       "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${workspaceRoot}/../react-area51/src/*",
         "webpack:///../magnolia-react-area51/lib/*": "${workspaceRoot}/../magnolia-react-area51/src/*",
         "webpack:///../react-area51/lib/*": "${workspaceRoot}/../react-area51/src/*",
         "webpack:///./*": "${webRoot}/*",

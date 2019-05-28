@@ -38,35 +38,31 @@ class CommentComponent extends React.Component {
   }
 
   performSearch() {
-    if (this.props.showInEdit) {
-      const query = {
-        query: {
-          match: {
-            page: this.props.refId
-          }
+    const query = {
+      query: {
+        match: {
+          page: this.props["@id"]
         }
-      };
+      }
+    };
 
-      let url = this.searchUrl();
+    let url = this.searchUrl();
 
-      fetch(url, query)
-        .then(res => res.json())
-        .then(res => {
-          // this.extractSource(res.hits.hits);
-          this.setState({
-            comments: this.extractSource(res.hits.hits),
-            loading: false
-          });
-        })
-        .catch(err => {
-          this.setState({ loading: false });
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(query)
+    })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          comments: this.extractSource(res.hits.hits),
+          loading: false
         });
-    } else {
-      this.setState({
-        comments: [],
-        loading: false
+      })
+      .catch(err => {
+        this.setState({ loading: false });
       });
-    }
   }
   render() {
     return (

@@ -18,7 +18,6 @@ import { dlog, removeFileExtension, removeTrailingSlash } from "./Helpers";
  * * It gets a CTXService passed in which helps with the things specific to the CMS.
  */
 class Area extends React.Component {
-
   // Use React Context API.
   // 'this.context' now contains the context managed in Area51Context.
   // This enables the managed content to be passed into the components.
@@ -27,8 +26,8 @@ class Area extends React.Component {
   /**
    * Returns the components (with their managed content) as an array of objects.
    * ASSUMPTION, that areas have their own nodes in the content structure.
-   * 
-   * @param {*} cmsAreaName The name of the area in the CMS. 
+   *
+   * @param {*} cmsAreaName The name of the area in the CMS.
    * @param {*} fullCmsPath The full path to the parent node of the area, in the CMS.
    * @param {*} contextService The context service for this CMS.
    */
@@ -49,22 +48,30 @@ class Area extends React.Component {
     );
 
     if (cmsAreaName != null) {
-      var actualComponents = Object.values(
-        contextService.getAreaComponents(cmsAreaName, pathInPage)
+      var areaComponents = contextService.getAreaComponents(
+        cmsAreaName,
+        pathInPage
       );
+      if (areaComponents) {
+        var actualComponents = Object.values(areaComponents);
+      }
       return actualComponents;
     }
-    
   }
 
   /**
    * From the 'fullCmsPath' of a node, get just the path of the node relative to the page it is on.
-   * @param {*} fullCmsPath 
-   * @param {*} serverPath 
-   * @param {*} rootCmsPath 
+   * @param {*} fullCmsPath
+   * @param {*} serverPath
+   * @param {*} rootCmsPath
    */
   getPathInPage(fullCmsPath, urlPath, serverPath, rootCmsPath, inPageEditor) {
-    var pathOfPage = this.getPathOfPage(urlPath, serverPath, rootCmsPath, inPageEditor);
+    var pathOfPage = this.getPathOfPage(
+      urlPath,
+      serverPath,
+      rootCmsPath,
+      inPageEditor
+    );
 
     // Strip off the pathOfPage from the front.
     var pathInPage = fullCmsPath.substr(pathOfPage.length);
@@ -80,17 +87,17 @@ class Area extends React.Component {
 
   /**
    * Get the full path of the page in the CMS.
-   * @param {*} urlPath 
-   * @param {*} serverPath 
-   * @param {*} rootCmsPath 
+   * @param {*} urlPath
+   * @param {*} serverPath
+   * @param {*} rootCmsPath
    */
-  getPathOfPage(urlPath, serverPath, rootCmsPath, inPageEditor){
+  getPathOfPage(urlPath, serverPath, rootCmsPath, inPageEditor) {
     var pathOfPage = urlPath;
 
     pathOfPage = removeFileExtension(pathOfPage);
 
     pathOfPage = removeTrailingSlash(pathOfPage);
-    
+
     if (inPageEditor) {
       //If there is a server path, strip it off from the front.
       pathOfPage = pathOfPage.substr(serverPath.length);
@@ -105,7 +112,6 @@ class Area extends React.Component {
   }
 
   addEditorHint_forArea(contextService) {
-    
     if (!contextService.isEditionMode()) {
       return;
     }
@@ -128,7 +134,6 @@ class Area extends React.Component {
 
     var editorHintHelper = new this.props.EditorHintHelper();
     editorHintHelper.addAreaHint(currentNode, areaDefinition, fullCmsPath);
-  
   }
 
   componentDidMount() {
@@ -148,7 +153,11 @@ class Area extends React.Component {
   render() {
     //dlog("Area render:" + this.props.cmsAreaName);
     var contextService = new this.props.CTXService(this.context);
-    const components = this.getAreaComponents(this.props.cmsAreaName, this.props.parentPath, contextService);
+    const components = this.getAreaComponents(
+      this.props.cmsAreaName,
+      this.props.parentPath,
+      contextService
+    );
 
     let componentElements = null;
     if (components) {

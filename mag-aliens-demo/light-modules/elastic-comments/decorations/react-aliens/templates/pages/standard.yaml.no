@@ -1,8 +1,0 @@
-dialog: elastic-comments:pages/standard
-
-# areas:
-#   comments:
-#     renderType: freemarker
-#     availableComponents:
-#       comments:
-#         id: elastic-comments:components/comments

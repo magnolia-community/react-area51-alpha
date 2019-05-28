@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Comment(props) {
-  const { name, message, time, page } = props.comment;
+  const { name, message, time } = props.comment;
 
   return (
     <div className="media mb-3">
