@@ -68,6 +68,7 @@ export default class CommentForm extends React.Component {
     // TODO This is Elastic...
     let { comment } = this.state;
     comment.page = this.props.pageId;
+    comment.time = Date.now();
 
     fetch(this.postUrl(), {
       method: "post",
@@ -79,7 +80,6 @@ export default class CommentForm extends React.Component {
         if (res.error) {
           this.setState({ loading: false, error: res.error });
         } else {
-          comment.time = res.time;
           this.addComment(comment);
 
           // clear the message box
