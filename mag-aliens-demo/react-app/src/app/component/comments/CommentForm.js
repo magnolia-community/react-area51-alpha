@@ -70,11 +70,7 @@ export default class CommentForm extends React.Component {
     comment.page = this.props.pageId;
     comment.time = Date.now();
 
-    // TODO This is a quick hack to get around the comments showing up.
-    // Should add a component to determine something like isEditMode()...
-    if (
-      !window.location.href.startsWith("http://localhost:8080/magnoliaAuthor/")
-    ) {
+    if (!this.props.pageEditor) {
       fetch(this.postUrl(), {
         method: "post",
         headers: { "Content-Type": "application/json" },

@@ -25,7 +25,7 @@ function withArea51(WrappedComponent, CTXService, EditorHintHelper, isPage) {
         let currentNode = ReactDOM.findDOMNode(this);
         //debugger;
         //console.log("AEH-OUT:" + this.simpleGetProps(currentNode));
-        if (!currentNode){
+        if (!currentNode) {
           return;
         }
         var editorHintHelper = new EditorHintHelper();
@@ -34,15 +34,15 @@ function withArea51(WrappedComponent, CTXService, EditorHintHelper, isPage) {
       }
     }
 
-    simpleGetProps = function(o){
-      var str='';
-      for(var p in o){
-          if(typeof o[p] == 'string'){
-              str+= p + ': ' + o[p]+'; \n';
-          }
+    simpleGetProps = function(o) {
+      var str = "";
+      for (var p in o) {
+        if (typeof o[p] == "string") {
+          str += p + ": " + o[p] + "; \n";
+        }
       }
       return str;
-  }
+    };
 
     componentDidMount() {
       if (!isPage) {
@@ -58,7 +58,12 @@ function withArea51(WrappedComponent, CTXService, EditorHintHelper, isPage) {
     render() {
       // ... and renders the wrapped component with the fresh data!
       // Notice that we pass through all props.
-      return <WrappedComponent {...this.props} />;
+      return (
+        <WrappedComponent
+          {...this.props}
+          pageEditor={this.context.inPageEditor}
+        />
+      );
     }
   };
 }
