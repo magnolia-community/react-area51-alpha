@@ -84,6 +84,7 @@ class CommentComponent extends React.Component {
             pageId={this.props["@id"]}
             server={this.props.server}
             index={this.props.index}
+            pageEditor={this.props.pageEditor}
           />
         </div>
         <div className="col-8  pt-3 bg-white">
