@@ -1,0 +1,27 @@
+form:
+  tabs:
+    - name: tabMain
+      fields:
+        - name: title
+          label: Title
+          i18n: true
+          fieldType: text
+        - name: text
+          label: Text
+          i18n: true
+          rows: 10
+          fieldType: richText
+        - name: image
+          fieldType: link
+          targetWorkspace: dam
+          appName: assets
+          label: Select image
+          identifierToPathConverter:
+            class: info.magnolia.dam.app.assets.field.translator.AssetCompositeIdKeyTranslator
+          contentPreviewDefinition:
+            contentPreviewClass: info.magnolia.dam.app.ui.field.DamFilePreviewComponent
+actions:
+  commit:
+    class: info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition
+  cancel:
+    class: info.magnolia.ui.admincentral.dialog.action.CancelDialogActionDefinition

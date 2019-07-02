@@ -1,0 +1,15 @@
+templateScript: /cra-minimal/templates/pages/standard.ftl
+renderType: freemarker
+visible: true
+title: React - Standard Minimal Page
+class: info.magnolia.module.jsmodels.rendering.JavascriptTemplateDefinition
+modelPath: /cra-minimal/templates/common/definition-extractor-model.js
+
+areas:
+  right:
+    renderType: freemarker
+    availableComponents:
+      title:
+        id: cra-minimal:components/title
+      text-image:
+        id: cra-minimal:components/text-image

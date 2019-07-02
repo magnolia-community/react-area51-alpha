@@ -1,0 +1,3 @@
+renderType: freemarker
+title: Alien Title
+dialog: cra-minimal:components/title
