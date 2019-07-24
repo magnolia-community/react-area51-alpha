@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 import axios from "axios";
-
-import ENVIRONMENT from "../../environments/environment";
 
 import { dlog, getRelativePath, getLink, inPageEditor } from "../AppHelpers";
 
@@ -25,6 +22,13 @@ class Navigation extends Component {
     this.USE_SAMPLE_DATA = false;
   }
 
+  handleClick = path => {
+    const event = new Event("pushState");
+
+    window.history.pushState({}, null, path);
+    window.dispatchEvent(event);
+  };
+
   componentWillMount() {
     this.loadNavContent();
   }
@@ -33,8 +37,13 @@ class Navigation extends Component {
     if (this.USE_SAMPLE_DATA) {
       this.useSampleData();
     } else {
+      const url =
+        process.env.REACT_APP_ORIGIN +
+        process.env.REACT_APP_SERVER_PATH +
+        process.env.REACT_APP_REST_NAV +
+        process.env.REACT_APP_BASE;
       axios
-        .get(ENVIRONMENT.restUrlNav + ENVIRONMENT.rootCmsPath)
+        .get(url)
         .then(response => {
           dlog("***");
           dlog("Navigation: got nav content.");
@@ -48,44 +57,6 @@ class Navigation extends Component {
           dlog(error);
         });
     }
-  }
-
-  useSampleData() {
-    this.setState({
-      init: true,
-      nav: {
-        "@name": "train-react",
-        "@path": "/train-react",
-        "@id": "5a9434c0-5be9-428a-9d5f-0e6562cf36a9",
-        "@nodeType": "mgnl:page",
-        title: "Magnolia train station (React)",
-        dashboard: {
-          "@name": "dashboard",
-          "@path": "/train-react/dashboard",
-          "@id": "b35d03cd-c266-4d66-957e-c76ed9313a47",
-          "@nodeType": "mgnl:page",
-          title: "Dashboard",
-          cars: {
-            "@name": "cars",
-            "@path": "/train-react/dashboard/cars",
-            "@id": "02c7e990-90e0-4712-b4ac-7d506f12d9ee",
-            "@nodeType": "mgnl:page",
-            title: "Cars",
-            "@nodes": []
-          },
-          "@nodes": ["cars"]
-        },
-        bikes: {
-          "@name": "bikes",
-          "@path": "/train-react/bikes",
-          "@id": "b44dad1a-6117-4d64-b9e0-873e714a8773",
-          "@nodeType": "mgnl:page",
-          title: "Bikes",
-          "@nodes": []
-        },
-        "@nodes": ["dashboard", "bikes"]
-      }
-    });
   }
 
   getPathOfPageFromURL() {
@@ -110,13 +81,15 @@ class Navigation extends Component {
     var subNavOfThisPage;
     var pathOfPage = this.getPathOfPageFromURL();
 
+    var a = this.state.nav;
+
     this.state.nav["@nodes"].map(function(nodeName) {
       var item = this.state.nav[nodeName];
       var path = item["@path"];
       var pathOfItem = getRelativePath(
         path,
-        ENVIRONMENT.serverPath,
-        ENVIRONMENT.rootCmsPath,
+        process.env.REACT_APP_SERVER_PATH,
+        process.env.REACT_APP_BASE,
         inPageEditor()
       );
       //dlog("page:"+ pathOfPage + " & item:" + pathOfItem)
@@ -128,17 +101,17 @@ class Navigation extends Component {
 
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-        <Link
-          to={getLink(
-            ENVIRONMENT.rootCmsPath,
-            ENVIRONMENT.serverPath,
-            ENVIRONMENT.rootCmsPath,
+        <a
+          href={getLink(
+            process.env.REACT_APP_BASE,
+            process.env.REACT_APP_SERVER_PATH,
+            process.env.REACT_APP_BASE,
             inPageEditor()
           )}
           className="navbar-brand"
         >
           {this.state.nav.title}
-        </Link>
+        </a>
 
         <div className="navbar-collapse">
           <div className="nav-stack">
@@ -166,6 +139,13 @@ class Navigation extends Component {
 }
 
 const MenuItems = props => {
+  const handleClick = path => {
+    const event = new Event("pushState");
+
+    window.history.pushState({}, null, path);
+    window.dispatchEvent(event);
+  };
+
   if (!props.spec) {
     dlog("SubNav. No spec.");
     return null;
@@ -177,21 +157,25 @@ const MenuItems = props => {
     return null;
   }, this);
 
-  return items.map(item => (
-    <li key={item["@path"]} className={props.class1}>
-      <Link
-        className={props.class2}
-        to={getLink(
-          item["@path"],
-          ENVIRONMENT.serverPath,
-          ENVIRONMENT.rootCmsPath,
-          inPageEditor()
-        )}
-      >
-        {item.title}
-      </Link>
-    </li>
-  ));
+  return items.map(item => {
+    const link = getLink(
+      item["@path"],
+      process.env.REACT_APP_SERVER_PATH,
+      process.env.REACT_APP_BASE,
+      inPageEditor()
+    );
+    return (
+      <li key={item["@path"]}>
+        <span onClick={() => handleClick(link)} className={props.class2}>
+          {item.title}
+        </span>
+      </li>
+    );
+  });
 };
+// <li key={item["@path"]} onClick={() => handleClick(link)} className={props.class1} >
+//   <a href=""
+//   {item.title}
+// </li>
 
 export default Navigation;

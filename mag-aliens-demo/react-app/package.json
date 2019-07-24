@@ -10,12 +10,13 @@
     "magnolia-react-area51": "file:../../magnolia-react-area51"
   },
   "devDependencies": {
-    "react-scripts": "^2.1.8",
+    "react-scripts": "3.0.1",
     "react-test-renderer": "^16.8.6",
-    "rewire": "^4.0.1"
+    "rewire": "^4.0.1",
+    "@rescripts/cli": "0.0.11"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "rescripts start",
     "build": "node ./scripts/build-non-split.js  && npm run clean:js && npm run copy:js  && npm run clean:css && npm run copy:css",
     "build-old": "react-scripts build && npm run clean:js && npm run copy:js  && npm run clean:css && npm run copy:css",
     "clean:js": "rm -f ../light-modules/react-aliens/webresources/static/js/*",

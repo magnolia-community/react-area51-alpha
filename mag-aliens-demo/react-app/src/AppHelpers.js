@@ -1,4 +1,3 @@
-
 export function dlog(message) {
   if (process.env.REACT_APP_LOG_LEVEL > 0) {
     console.log(message);
@@ -12,10 +11,10 @@ then it will return just /area/comp2.
 */
 export function getRelativePath(path, serverPath, rootCmsPath, inPageEditor) {
   if (inPageEditor) {
-    dlog("NAV: inPageEdigtor:" + serverPath + path);
+    //dlog("NAV: inPageEditor:" + serverPath + path);
     return serverPath + path;
   } else {
-    dlog("NAV: Not in page editor.");
+    //dlog("NAV: Not in page editor.");
     // Just strip off the pathOfPage. We assume it is the correct path root.
     var relativePath = path.substr(rootCmsPath.length);
     return relativePath;
