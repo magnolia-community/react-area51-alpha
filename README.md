@@ -28,7 +28,7 @@ The Area51 library is CMS-agnostic, additional CMS-specific libraries can levera
 
 
 # Setup
- 
+
 ## How to develop these libraries and demo (or just try it out).
 
 As the project is in rapid development, we currently host three things in this repo, two libraries (react-area51, magnolia-react-area51) & a demo project (Area51 Aliens) that shows the nested areas and multipage support in action.
@@ -37,18 +37,18 @@ As the project is in rapid development, we currently host three things in this r
 * Java SE JDK (Tested on v1.8.0_151)
 * Node (Tested on v10.15.0)
 * mgnl, the Magnolia CLI (Tested on v3.0.7) (Install globally with `npm -g @magnolia/cli`.)
- 
+
 ### Setup Demo on Magnolia CMS (~10 minutes)
 
 This Git repo contains binding to a simple Magnolia CMS project for demonstration purposes.
 
 1. Clone this git repository
 2. Go into the demo project directory: `react-area51-alpha/mag-aliens-demo`.
-3. Use the Magnolia CLI to install Magnolia in the directory: `mgnl jumpstart -m`. 
+3. Use the Magnolia CLI to install Magnolia in the directory: `mgnl jumpstart -m`.
    * Choose option 3, `magnolia-community-demo-webapp` because it will configure CORS for you.
-4. To easily install necessary config and sample content, copy the contents from `_dev/import-this-manually` into `apache-tomcat/webapps/magnoliaAuthor/WEB-INF/bootstrap/common 
+4. To easily install necessary config and sample content, copy the contents from `_dev/import-this-manually` into `apache-tomcat/webapps/magnoliaAuthor/WEB-INF/bootstrap/common
 `. (Otherwise use standard Magnolia import functionality to bring it in.)
-5. Start Magnolia server:`mgnl start`, and open it in a browser: `http://localhost:8080/magnoliaAuthor/`. 
+5. Start Magnolia server:`mgnl start`, and open it in a browser: `http://localhost:8080/magnoliaAuthor/`.
    * Username: superuser. Password: superuser.
 6. Open `Pages` app. Open `solar-system`. You should see the React demo project, and be able to edit it! :boom: (This is because the React app is already deployed to `/light-modules/react-aliens/webresources/static`)
 
@@ -62,12 +62,9 @@ To work on the either of the libraries and the demo project with the comfort of 
 
 **Setup React Code:**
 
-1. Open three terminal tabs.
+1. Open two terminal tabs.
 2. Go to each of these directories and install the npm package:
 
-* react-area51
-  * The base library. 
-  * `npm install`
 * magnolia-react-area51
   * The CMS-specific library, for Magnolia.
   * `npm install`
@@ -81,10 +78,6 @@ To work on the either of the libraries and the demo project with the comfort of 
 
 With this setup, whenever you change any file in any of the projects, the full demo will automatically rebuild.
 
-* react-area51
-  * `npm run build`
-  * Runs webpack with a watch configuration.
-  * Builds `./lib/ReactArea51.js`
 * magnolia-react-area51
   * `npm run build`
   * Runs webpack with a watch configuration.
@@ -94,7 +87,7 @@ With this setup, whenever you change any file in any of the projects, the full d
   * Opens running app in a browser.
   * Depends on the `MagnoliaReactArea51.js` library.
   * Based on Create-React-App 2.*
-  
+
 Now try changing any content in the Magnolia Pages app, then refresh this app and notice that it reflects your content changes! :fire:
 
 
@@ -113,10 +106,17 @@ Run the Jest-based snapshot test for the mag-aliens-demo project by running `npm
 
 **Note: this is how it will work once we leave Alpha. For now both libraries and the demo are in this one project to facilitate experimentation and development.**
 
-[Read 'How to Use Area51 in your React project'](/react-area51)
-
 **Working on Page Editor Hints in Dev mode**
 In order to see the the page editor hints generated while in CRA development mode, you need to use some test local data JSON files, instead of connecting to the CMS endpoints. You can do this in the demo project at `mag-aliens-demo/react-app/App.js` by setting `USE_SAMPLE_DATA` to `true`.
+
+# Branches
+
+'context-model' Uses Context and HoC to pass props to components. (More complicated)
+Has 'magnolia-react-area51', and 'react-area51' libraries.
+
+'master' and 'state-model' Uses State and Props only to pass props. Only has 'magnolia-react-area51', not 'react-area51'.
+
+
 
 # Known Issues :grimacing:
 
@@ -126,18 +126,12 @@ In order to see the the page editor hints generated while in CRA development mod
 
 ## Things to improve
 Not bugs, but lets improve these:
-* Use more real environment variables.
 * Add more tests.
 * Make the Content JSON parsing 'pluggable'.
-* Get rid of flickering when changing Routes.
-* Move the mapping.js to an external file.
 
 # Technical Details :triangular_ruler:
 
-[Read 'Technical Details'](/react-area51)
-
-## Technical Notes for Magnolia
-In order to make it easier to include the React build in a Magnolia page (In order to use the Page Editor) the demo project overrides default create-react-app v2 behaviour, and does not code-split. This is achieved (without 'eject' from create-react-app via a custom build script in `mag-aliens-demo/react-app/scripts/build-non-split.js`.
+TODO.
 
 ### Contributors
 
