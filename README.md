@@ -28,7 +28,7 @@ The Area51 library is CMS-agnostic, additional CMS-specific libraries can levera
 
 
 # Setup
- 
+
 ## How to develop these libraries and demo (or just try it out).
 
 As the project is in rapid development, we currently host three things in this repo, two libraries (react-area51, magnolia-react-area51) & a demo project (Area51 Aliens) that shows the nested areas and multipage support in action.
@@ -37,18 +37,18 @@ As the project is in rapid development, we currently host three things in this r
 * Java SE JDK (Tested on v1.8.0_151)
 * Node (Tested on v10.15.0)
 * mgnl, the Magnolia CLI (Tested on v3.0.7) (Install globally with `npm -g @magnolia/cli`.)
- 
+
 ### Setup Demo on Magnolia CMS (~10 minutes)
 
 This Git repo contains binding to a simple Magnolia CMS project for demonstration purposes.
 
 1. Clone this git repository
 2. Go into the demo project directory: `react-area51-alpha/mag-aliens-demo`.
-3. Use the Magnolia CLI to install Magnolia in the directory: `mgnl jumpstart -m`. 
+3. Use the Magnolia CLI to install Magnolia in the directory: `mgnl jumpstart -m`.
    * Choose option 3, `magnolia-community-demo-webapp` because it will configure CORS for you.
-4. To easily install necessary config and sample content, copy the contents from `_dev/import-this-manually` into `apache-tomcat/webapps/magnoliaAuthor/WEB-INF/bootstrap/common 
+4. To easily install necessary config and sample content, copy the contents from `_dev/import-this-manually` into `apache-tomcat/webapps/magnoliaAuthor/WEB-INF/bootstrap/common
 `. (Otherwise use standard Magnolia import functionality to bring it in.)
-5. Start Magnolia server:`mgnl start`, and open it in a browser: `http://localhost:8080/magnoliaAuthor/`. 
+5. Start Magnolia server:`mgnl start`, and open it in a browser: `http://localhost:8080/magnoliaAuthor/`.
    * Username: superuser. Password: superuser.
 6. Open `Pages` app. Open `solar-system`. You should see the React demo project, and be able to edit it! :boom: (This is because the React app is already deployed to `/light-modules/react-aliens/webresources/static`)
 
@@ -94,7 +94,7 @@ With this setup, whenever you change any file in any of the projects, the full d
   * Opens running app in a browser.
   * Depends on the `MagnoliaReactArea51.js` library.
   * Based on Create-React-App 2.*
-  
+
 Now try changing any content in the Magnolia Pages app, then refresh this app and notice that it reflects your content changes! :fire:
 
 
@@ -108,6 +108,14 @@ Any code changes you make to react-app (and the libraries) must be deployed to t
 Run the Jest-based automatic tests for the magnolia-react-area51 package by running `npm run test`.
 
 Run the Jest-based snapshot test for the mag-aliens-demo project by running `npm test`.
+
+# Branches
+
+'context-model' Uses Context and HoC to pass props to components. (More complicated)
+Has 'magnolia-react-area51', and 'react-area51' libraries.
+
+'master' and 'state-model' Uses State and Props only to pass props. Only has 'magnolia-react-area51', not 'react-area51'.
+
 
 # How to Use Area51 in your React project (When we're out of Alpha! :telescope:)
 
