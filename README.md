@@ -44,7 +44,7 @@ This Git repo contains binding to a simple Magnolia CMS project for demonstratio
 
 1. Clone this git repository
 2. Go into the demo project directory: `react-area51-alpha/mag-aliens-demo`.
-3. Use the Magnolia CLI to install Magnolia in the directory: `mgnl jumpstart -m`.
+3. Use the Magnolia CLI to install Magnolia in the directory: `mgnl jumpstart`.
    * Choose option 3, `magnolia-community-demo-webapp` because it will configure CORS for you.
 4. To easily install necessary config and sample content, copy the contents from `_dev/import-this-manually` into `apache-tomcat/webapps/magnoliaAuthor/WEB-INF/bootstrap/common
 `. (Otherwise use standard Magnolia import functionality to bring it in.)
@@ -64,6 +64,7 @@ To work on the either of the libraries and the demo project with the comfort of 
 
 1. Open two terminal tabs.
 2. Go to each of these directories and install the npm package:
+
 
 * magnolia-react-area51
   * The CMS-specific library, for Magnolia.
@@ -86,7 +87,7 @@ With this setup, whenever you change any file in any of the projects, the full d
   * `npm start`
   * Opens running app in a browser.
   * Depends on the `MagnoliaReactArea51.js` library.
-  * Based on Create-React-App 2.*
+  * Based on Create-React-App 3.*
 
 Now try changing any content in the Magnolia Pages app, then refresh this app and notice that it reflects your content changes! :fire:
 
@@ -102,23 +103,13 @@ Run the Jest-based automatic tests for the magnolia-react-area51 package by runn
 
 Run the Jest-based snapshot test for the mag-aliens-demo project by running `npm test`.
 
-# How to Use Area51 in your React project (When we're out of Alpha! :telescope:)
-
-**Note: this is how it will work once we leave Alpha. For now both libraries and the demo are in this one project to facilitate experimentation and development.**
-
-**Working on Page Editor Hints in Dev mode**
-In order to see the the page editor hints generated while in CRA development mode, you need to use some test local data JSON files, instead of connecting to the CMS endpoints. You can do this in the demo project at `mag-aliens-demo/react-app/App.js` by setting `USE_SAMPLE_DATA` to `true`.
-
-# Branches
-
-'context-model' Uses Context and HoC to pass props to components. (More complicated)
-Has 'magnolia-react-area51', and 'react-area51' libraries.
-
-'master' and 'state-model' Uses State and Props only to pass props. Only has 'magnolia-react-area51', not 'react-area51'.
-
+# How to Connect React Dev Server to Magnolia Pages app.
+To establish a real-time connection, (so that you dont have to do a 'build' during development) see the comments at the bottom of `mag-aliens-demo/light-modules/react-aliens/templates/pages/standard.ftl`. It lets you pull in the JS bundle from the dev server.
 
 
 # Known Issues :grimacing:
+
+(Magnolia Developer team is working on these issues.)
 
 * When a new page, or a new component is created which contains areas, Magnolia will not create the necessary area nodes in the 'JCR' backend. Therefore when playing with the demo, you can copy an existing page, or you can go into the 'JCR Browser' app and copy area nodes from one page to a new page.
 * The Magnolia Page Editor runs javascript when the page loads in order to scan the page for 'EditHints' and insert the green 'EditBars'. This means if a React app is dynamic and later shows a new component, that new component will not have green EditBars, because the component was not in the DOM at the time the Magnolia javascript ran.
@@ -131,9 +122,24 @@ Not bugs, but lets improve these:
 
 # Technical Details :triangular_ruler:
 
-TODO.
+TODO
 
-### Contributors
+# Environment Variables for Default setup.
+(In the .env file.)
+
+```
+REACT_APP_ORIGIN= http://localhost:8080
+REACT_APP_SERVER_PATH= /magnoliaAuthor
+REACT_APP_BASE= /solar-system
+
+REACT_APP_STATIC_PATH= /.resources/react-aliens/webresources/static
+REACT_APP_REST_NAV= /.rest/delivery/pagenav/v1
+REACT_APP_REST_CONTENT= /.rest/delivery/pages/v1
+
+REACT_APP_LOG_LEVEL= 1
+```
+
+# Contributors
 
 * Adrien Manzoni, [Magnolia](https://documentation.magnolia-cms.com)
 * Bartosz Staryga, [Magnolia](https://documentation.magnolia-cms.com)

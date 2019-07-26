@@ -9,9 +9,7 @@
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {
-    "react-area51": "file:../react-area51"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0"

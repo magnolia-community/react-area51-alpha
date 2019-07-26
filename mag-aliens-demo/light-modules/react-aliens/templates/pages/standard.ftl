@@ -41,9 +41,9 @@ Default: Just get the content on this one page.
 		<div id="root"></div>
 
 
-		<!-- ${resfn.js("/react-aliens/webresources/static/js/main.*js")} -->
-[#-- In order to serve the site directly from CRA development server comment out resfn CSS and JS and uncomment line below --]
-	<script src="http://localhost:3000/static/js/bundle.js"></script>
+		${resfn.js("/react-aliens/webresources/static/js/main.*js")}
+[#-- In order to serve the site directly from CRA development server comment out resfn CSS and JS above... and uncomment line below --]
+	<!-- <script src="http://localhost:3000/static/js/bundle.js"></script> -->
 
 	</body>
 </html>
