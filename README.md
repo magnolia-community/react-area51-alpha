@@ -44,7 +44,7 @@ This Git repo contains binding to a simple Magnolia CMS project for demonstratio
 
 1. Clone this git repository
 2. Go into the demo project directory: `react-area51-alpha/mag-aliens-demo`.
-3. Use the Magnolia CLI to install Magnolia 5.6.5+ in the directory: `mgnl jumpstart -m 5.7.2`. 
+3. Use the Magnolia CLI to install Magnolia in the directory: `mgnl jumpstart -m`. 
    * Choose option 3, `magnolia-community-demo-webapp` because it will configure CORS for you.
 4. To easily install necessary config and sample content, copy the contents from `_dev/import-this-manually` into `apache-tomcat/webapps/magnoliaAuthor/WEB-INF/bootstrap/common 
 `. (Otherwise use standard Magnolia import functionality to bring it in.)
@@ -142,5 +142,6 @@ In order to make it easier to include the React build in a Magnolia page (In ord
 ### Contributors
 
 * Adrien Manzoni, [Magnolia](https://documentation.magnolia-cms.com)
+* Bartosz Staryga, [Magnolia](https://documentation.magnolia-cms.com)
 * Christopher Zimmermann, [Magnolia](https://documentation.magnolia-cms.com)
 * *Your name here!* :grinning:
